@@ -1,195 +1,243 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, Instagram, Youtube } from "lucide-react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, Lock, FileText, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { LUMINA_LORE, LUMINA_MEDIA, SOCIAL_LINKS } from "@/constants/luminaLore";
+import { LuminaMediaSection } from "@/components/projects/lumina-media-section";
 
-export default function LuminaPage() {
+export default function LuminaProjectPage() {
+    const [activeTab, setActiveTab] = useState<number>(0);
+    const [syncRate, setSyncRate] = useState<number>(0);
+    const [barWidth, setBarWidth] = useState<number>(0);
+
+    // Fix hydration mismatch by generating random values on client only
+    useEffect(() => {
+        setSyncRate(Math.floor(Math.random() * 20 + 80));
+        setBarWidth(Math.floor(Math.random() * 40 + 60));
+    }, [activeTab]); // Re-roll on tab change for effect
+
+
+    const activePersona = LUMINA_LORE.personas[activeTab];
+
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className={`min-h-screen bg-black text-white selection:bg-white/30`}>
+            {/* Background Gradient Dynamic based on Active Persona */}
+            <div className={`fixed inset-0 bg-gradient-to-br ${activePersona.color} opacity-40 transition-colors duration-1000 -z-10`} />
 
-            {/* 1. HERO SECTION */}
-            <section className="relative h-screen w-full overflow-hidden">
-                {/* Background Image */}
+            {/* NAVIGATION */}
+            <nav className="fixed top-24 left-0 right-0 z-50 p-6 flex justify-between items-center mix-blend-difference">
+                <Link href="/projects" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+                    <ArrowLeft className="w-5 h-5" />
+                    <span className="font-bold tracking-widest">PROJECTS</span>
+                </Link>
+                <div className="flex items-center gap-4">
+                    <span className="text-xs font-mono opacity-50">CONFIDENTIAL</span>
+                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                </div>
+            </nav>
+
+            {/* HERO SECTION */}
+            <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/lumina/lum1.png"
-                        alt="LUMINA Hero"
+                        src="/images/lumina/main_poster.jpg"
+                        alt="LUMINA Main Poster"
                         fill
-                        className="object-cover object-top opacity-60"
+                        className="object-cover opacity-60 scale-105 animate-pulse-slow"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-end pb-32">
+                <div className="relative z-10 text-center max-w-4xl px-4">
                     <motion.div
-                        initial={{ opacity: 0, y: 50 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 1 }}
                     >
-                        <div className="flex items-center gap-4 mb-6">
-                            <span className="bg-white text-black text-xs font-bold px-3 py-1 rounded-full tracking-widest">
-                                METAHUMAN ARTIST
-                            </span>
-                            <span className="text-gray-400 font-mono text-sm">EST. 2024</span>
-                        </div>
-                        <h1 className="text-7xl md:text-9xl font-bold tracking-tighter mb-6 leading-none">
-                            LUMINA
+                        <h1 className="text-[12vw] md:text-[8vw] font-black tracking-tighter leading-none mb-4 mix-blend-overlay opacity-90">
+                            {LUMINA_LORE.projectGoal.title}
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-                            경계를 허무는 디지털 뮤즈.<br />
-                            LUMINA는 가상과 현실 사이에서 가장 완벽한 아름다움을 탐구합니다.
+                        <p className="text-xl md:text-3xl font-light tracking-[0.2em] text-gray-200 mb-8">
+                            {LUMINA_LORE.coreConcept.catchphrase}
                         </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* 2. PROFILE & BIO */}
-            <section className="py-32 container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
-                    <div className="md:col-span-5 relative aspect-[3/4] rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                        <Image
-                            src="/lumina/lum2.png"
-                            alt="LUMINA Portrait"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="md:col-span-1"></div>
-                    <div className="md:col-span-6 space-y-12">
-                        <div className="space-y-6">
-                            <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-                                "I AM NOT A RENDER.<br />I AM A STATEMENT."
-                            </h2>
-                            <p className="text-gray-400 text-lg leading-relaxed">
-                                루미나는 단순한 3D 모델링이 아닙니다. 그녀는 서울을 기반으로 활동하며,
-                                패션, 음악, 그리고 서브컬처를 사랑하는 22세의 크리에이터입니다.
-                                <br /><br />
-                                완벽한 비율과 감각적인 스타일링, 그리고 AI로 구현된 자연스러운 움직임.
-                                루미나는 브랜드가 원하는 '가장 이상적인 앰버서더'의 모습을 하고 있습니다.
+                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-lg max-w-2xl mx-auto">
+                            <p className="text-sm md:text-lg text-gray-300 leading-relaxed font-light">
+                                {LUMINA_LORE.coreConcept.definition}
                             </p>
                         </div>
+                    </motion.div>
+                </div>
 
-                        <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
-                            <div>
-                                <h4 className="text-gray-500 font-bold mb-2 text-sm">HEIGHT</h4>
-                                <p className="text-2xl font-mono">172cm</p>
+                {/* Scroll Indicator */}
+                <motion.div
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-50"
+                >
+                    <ChevronRight className="w-6 h-6 rotate-90" />
+                </motion.div>
+            </section>
+
+            {/* CORE IDENTITY: 3 PERSONAS */}
+            <section className="min-h-screen relative flex flex-col md:flex-row">
+                {/* LEFT: VISUAL */}
+                <div className="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden border-r border-white/10">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activePersona.id}
+                            initial={{ opacity: 0, scale: 1.1 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.7 }}
+                            className="absolute inset-0"
+                        >
+                            <Image
+                                src={activePersona.imagePath}
+                                alt={activePersona.name}
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+                            {/* Floating Quote */}
+                            <div className="absolute bottom-12 left-8 md:bottom-24 md:left-12 max-w-md">
+                                <h3 className={`text-3xl md:text-5xl font-bold ${activePersona.textColor} leading-tight mb-4`}>
+                                    "{activePersona.quote}"
+                                </h3>
+                                <p className="text-white/60 font-mono text-sm">
+                                    {activePersona.visualKey}
+                                </p>
                             </div>
-                            <div>
-                                <h4 className="text-gray-500 font-bold mb-2 text-sm">STYLE</h4>
-                                <p className="text-2xl font-mono">Street / High-end</p>
-                            </div>
-                            <div>
-                                <h4 className="text-gray-500 font-bold mb-2 text-sm">PERSONALITY</h4>
-                                <p className="text-2xl font-mono">Chic & Free</p>
-                            </div>
-                            <div>
-                                <h4 className="text-gray-500 font-bold mb-2 text-sm">INTERESTS</h4>
-                                <p className="text-2xl font-mono">Fashion, DJing</p>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+                {/* RIGHT: INTERACTIVE DATA */}
+                <div className="w-full md:w-1/2 min-h-[50vh] md:h-screen bg-black/80 backdrop-blur-sm p-8 md:p-16 flex flex-col justify-center">
+                    <div className="space-y-12">
+                        {/* Tabs */}
+                        <div className="flex gap-4 border-b border-white/10 pb-4 overflow-x-auto">
+                            {LUMINA_LORE.personas.map((persona, index) => (
+                                <button
+                                    key={persona.id}
+                                    onClick={() => setActiveTab(index)}
+                                    className={`text-xl md:text-2xl font-bold uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex-shrink-0
+                                        ${activeTab === index
+                                            ? "bg-white text-black scale-105"
+                                            : "text-gray-600 hover:text-white hover:bg-white/10"}`}
+                                >
+                                    {persona.name.split(' ')[0]}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Content */}
+                        <div className="space-y-8">
+                            <motion.div
+                                key={activePersona.id}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <div className="space-y-2 mb-6">
+                                    <h2 className={`text-4xl md:text-6xl font-black ${activePersona.textColor}`}>
+                                        {activePersona.role}
+                                    </h2>
+                                    <p className="text-xl text-gray-400 font-medium">
+                                        {activePersona.essence}
+                                    </p>
+                                </div>
+
+                                <div className="prose prose-invert prose-lg max-w-none">
+                                    <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                                        {activePersona.description}
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* Stat Bars (Visual Only) */}
+                            <div className="space-y-4 pt-8 border-t border-white/10">
+                                <div className="flex items-center gap-4 text-xs font-mono text-gray-500">
+                                    <span>SYNCHRONIZATION</span>
+                                    <div className="flex-1 h-1 bg-gray-800 rounded-full overflow-hidden">
+                                        <motion.div
+                                            className="h-full bg-white"
+                                            initial={{ width: 0 }}
+                                            whileInView={{ width: `${barWidth}%` }}
+                                            transition={{ duration: 1.5 }}
+                                        />
+                                    </div>
+                                    <span>{syncRate}%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* 3. FASHION SHOWCASE (MASONRY LOOK) */}
-            <section className="py-32 bg-zinc-950">
-                <div className="container mx-auto px-4 mb-24 text-center">
-                    <h2 className="text-4xl font-bold mb-6">LOOKBOOK</h2>
-                    <p className="text-gray-400">Digital Fashion Week 2025 Collection</p>
-                </div>
+            {/* PROJECT ARCHIVE (NEW SECTION) */}
+            <section className="py-24 px-4 md:px-12 bg-zinc-950 border-t border-white/10">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="mb-16 border-b border-white/20 pb-8">
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-2">
+                            PROJECT ARCHIVE
+                        </h2>
+                        <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
+                            LUMINA : THE ORIGIN RECORD
+                        </p>
+                    </div>
 
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* Image 3 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="space-y-4"
-                        >
-                            <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
-                                <Image src="/lumina/lum3.jpg" alt="Fashion 1" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        {/* Origin Story */}
+                        <div className="space-y-8">
+                            <div className="border-l-2 border-white/30 pl-6">
+                                <h3 className="text-2xl font-bold text-white mb-2">ORIGIN: {LUMINA_LORE.origin.name}</h3>
+                                <p className="text-gray-400 font-mono text-sm mb-4">{LUMINA_LORE.origin.identity}</p>
+                                <p className="text-lg text-gray-300 leading-relaxed">
+                                    {LUMINA_LORE.origin.trigger}
+                                </p>
                             </div>
-                            <div className="flex justify-between items-center text-sm">
-                                <span className="text-white font-bold">BROWN LEATHER MOOD</span>
-                                <span className="text-gray-500">FW 2024</span>
-                            </div>
-                        </motion.div>
 
-                        {/* Image 4 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="space-y-4 lg:mt-24"
-                        >
-                            <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
-                                <Image src="/lumina/lum4.jpg" alt="Fashion 2" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                            <div className="bg-white/5 p-6 rounded-lg border border-white/10">
+                                <h4 className="text-sm font-bold text-gray-500 mb-2 uppercase">Core Rule</h4>
+                                <p className="text-white font-medium">
+                                    {LUMINA_LORE.origin.rule}
+                                </p>
                             </div>
-                            <div className="flex justify-between items-center text-sm">
-                                <span className="text-white font-bold">ALL BLACK CHIC</span>
-                                <span className="text-gray-500">Street Snap</span>
-                            </div>
-                        </motion.div>
+                        </div>
 
-                        {/* Image 5 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="space-y-4"
-                        >
-                            <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
-                                <Image src="/lumina/lum5.jpg" alt="Fashion 3" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                        {/* Philosophy & Goal */}
+                        <div className="space-y-12">
+                            <div>
+                                <h3 className="text-xl font-bold text-gray-200 mb-4 uppercase tracking-wider">
+                                    Why 2026?
+                                </h3>
+                                <p className="text-gray-400 leading-relaxed text-justify">
+                                    {LUMINA_LORE.projectGoal.content}
+                                </p>
                             </div>
-                            <div className="flex justify-between items-center text-sm">
-                                <span className="text-white font-bold">Y2K VIBES</span>
-                                <span className="text-gray-500">Editorial</span>
+
+                            <div className="relative pt-8 md:pt-12">
+                                <FileText className="absolute top-0 left-0 w-8 h-8 text-white/20" />
+                                <h3 className="text-2xl font-bold text-white mb-4 pl-10">
+                                    {LUMINA_LORE.philosophy.ending}
+                                </h3>
+                                <p className="text-xl md:text-2xl text-gray-300 font-light italic pl-10 leading-relaxed">
+                                    "{LUMINA_LORE.philosophy.message}"
+                                </p>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* 4. REAL-TIME TECH */}
-            <section className="py-32 container mx-auto px-4 text-center">
-                <div className="max-w-4xl mx-auto border border-white/10 bg-white/5 rounded-3xl p-12 md:p-24 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-50"></div>
-
-                    <h2 className="text-3xl md:text-5xl font-bold mb-8">
-                        "She never sleeps."
-                    </h2>
-                    <p className="text-xl text-gray-400 mb-12 leading-relaxed">
-                        HumanLab AI의 실시간 렌더링 파이프라인으로,<br />
-                        루미나는 365일 24시간 언제든 콘텐츠를 생산할 수 있습니다.<br />
-                        촬영 스케줄도, 컨디션 난조도 없습니다.
-                    </p>
-
-                    <div className="flex justify-center gap-6">
-                        <Button className="rounded-full bg-white text-black hover:bg-gray-200 px-8 h-12 text-lg font-bold">
-                            협업 문의하기
-                        </Button>
-                        <Button variant="outline" className="rounded-full border-white/20 text-white hover:bg-white/10 px-8 h-12 text-lg">
-                            <Instagram className="w-5 h-5 mr-2" /> Follow Lumina
-                        </Button>
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer Navigation */}
-            <div className="container mx-auto px-4 pb-12">
-                <Link href="/projects" className="inline-flex items-center text-gray-500 hover:text-white transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2" /> Back to Projects
-                </Link>
-            </div>
-
-        </div>
-    )
+            {/* MEDIA SECTION */}
+            <LuminaMediaSection mediaItems={LUMINA_MEDIA} socialLinks={SOCIAL_LINKS} />
+        </div >
+    );
 }

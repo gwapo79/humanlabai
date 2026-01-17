@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard-gov@v1/dist/web/static/pretendard-gov.css");
 @import "tailwindcss";
 
 :root {
@@ -12,14 +13,14 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-  --font-sans: var(--font-inter);
+  --font-sans: "Pretendard GOV", var(--font-inter), sans-serif;
 }
 
 /* Force dark mode behavior or just use the variables above */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  font-family: "Pretendard GOV", var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

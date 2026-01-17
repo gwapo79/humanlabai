@@ -18,9 +18,9 @@ interface ProjectProps {
     imageUrl?: string; // New optional prop
 }
 
-const statusColors = {
-    ACTIVE: "bg-green-500",
-    GROWING: "bg-blue-500",
+const statusColors: Record<string, string> = {
+    ACTIVE: "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]",
+    GROWING: "bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]",
     DEVELOPING: "bg-yellow-500",
 };
 

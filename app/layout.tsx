@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { FloatingCTA } from "@/components/layout/floating-cta";
 
 export default function RootLayout({
   children,
@@ -24,13 +25,15 @@ export default function RootLayout({
   return (
     <html lang="ko" className="dark">
       <body
-        className={`${inter.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
+        suppressHydrationWarning
+        className={`${inter.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
         <Header />
         <main className="flex-1 pt-16">
           {children}
         </main>
         <Footer />
+        <FloatingCTA />
       </body>
     </html>
   );
