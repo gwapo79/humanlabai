@@ -1,36 +1,31 @@
-import { prisma } from "@/lib/prisma";
-import { LiveFeedClient } from "./live-feed-client";
+// components/live/live-feed.tsx
+// [Prisma 제거 및 정적 데이터로 대체]
 
-export async function LiveFeed() {
-    // 1. Fetch from DB
-    // 2. If failure or empty, handle gracefully (Component handles empty array)
+export default function LiveFeed() {
+    // 임시 더미 데이터 (빌드 에러 방지용)
+    const logs = [
+        { id: 1, title: 'HumanLab AI Server Initialized', category: 'SYSTEM', date: '2026-01-20' },
+        { id: 2, title: 'LUMINA Project Data Sync Complete', category: 'DATA', date: '2026-01-19' },
+        { id: 3, title: 'New Lab Note: Sora vs Gen-3 Posted', category: 'CONTENT', date: '2026-01-19' },
+        { id: 4, title: 'Global CDN Connected (Cloudflare)', category: 'INFRA', date: '2026-01-18' },
+        { id: 5, title: 'AdStory Database Migration Success', category: 'DB', date: '2026-01-18' },
+    ];
 
-    let activities: any[] = [];
-    try {
-        const logs = await prisma.activityLog.findMany({
-            orderBy: { publishedAt: 'desc' },
-            take: 10,
-            include: {
-                entity: true
-            }
-        });
-
-        // Transform for client
-        activities = logs.map(log => ({
-            id: log.id,
-            source: log.source,
-            date: log.publishedAt.toISOString().split('T')[0].replace(/-/g, '.'), // YYYY.MM.DD
-            title: log.title,
-            description: log.description || "",
-            image: log.imageUrl,
-            tags: log.tags ? log.tags.split(',') : [],
-            entityName: log.entity.name
-        }));
-
-    } catch (e) {
-        console.error("LiveFeed DB Error:", e);
-        // Fallback to empty, client will show "No recent activity" or skeleton
-    }
-
-    return <LiveFeedClient initialActivities={activities} />;
+    return (
+        <div className="space-y-4">
+            {logs.map((log) => (
+                <div key={log.id} className="border-b border-gray-800 pb-4 mb-4">
+                    <div className="flex items-center justify-between mb-1">
+                        <span className="text-humanlab-neon text-xs font-bold tracking-widest uppercase">
+                            [{log.category}]
+                        </span>
+                        <span className="text-gray-600 text-xs font-mono">{log.date}</span>
+                    </div>
+                    <h3 className="text-lg text-gray-300 font-medium">
+                        {log.title}
+                    </h3>
+                </div>
+            ))}
+        </div>
+    );
 }
