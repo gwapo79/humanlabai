@@ -13,6 +13,8 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-humanlab-neon: #3b82f6;
+  --color-humanlab-gray: #9ca3af;
   --font-sans: "Pretendard GOV", var(--font-inter), sans-serif;
 }
 

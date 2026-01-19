@@ -35,12 +35,12 @@ export function Section3Solution() {
                     className="max-w-5xl mx-auto text-center"
                 >
                     <h2 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
-                        복잡한 AI 기술, 사장님은 몰라도 됩니다.
+                        기술은 우리가 다룹니다.<br /> 결과만 가져가십시오.
                     </h2>
 
                     <p className="text-xl md:text-3xl text-white mb-12 leading-relaxed font-light">
-                        HumanLab AI는 <strong className="text-blue-400">전문 기획자</strong>와 <strong className="text-emerald-400">디자이너</strong>가<br />
-                        최신 AI 기술을 활용해 직접 운영합니다.
+                        HumanLab AI는 단순한 자동화 툴이 아닙니다.<br />
+                        <strong className="text-blue-400">검증된 기획자</strong>와 <strong className="text-emerald-400">디자이너</strong>가 최신 AI 기술을 통제하여 최적의 결과물을 설계합니다.
                     </p>
 
                     {/* Holographic Service Grid */}
@@ -120,7 +120,7 @@ export function Section3Solution() {
 
                     {/* Closing Statement */}
                     <p className="text-xl md:text-2xl text-white font-medium">
-                        이 모든 것이 별도의 계약 없이, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 font-bold">HumanLab AI 구독 하나로</span> 가능합니다.
+                        복잡한 계약 절차 없이, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 font-bold">구독 하나로 이 모든 팀을 소유하세요.</span>
                     </p>
                 </motion.div>
             </div>

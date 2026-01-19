@@ -115,13 +115,13 @@ export function Section2Barrier() {
                     className="max-w-4xl bg-black/40 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-2xl"
                 >
                     <h2 className="text-4xl md:text-6xl font-bold text-red-500 mb-8 drop-shadow-2xl leading-tight">
-                        AI가 공짜라고<br /> 누가 그랬나요?
+                        AI 도입, '도구'가 아니라<br /> '전문가'가 필요합니다
                     </h2>
 
                     <p className="text-xl md:text-2xl text-gray-100 leading-relaxed font-light break-keep">
-                        매달 쌓이는 구독료, 끝없는 프롬프트 공부.<br />
-                        밤새워 만들었는데 막상 쓸 수 없는 조악한 결과물.<br className="hidden md:block" />
-                        <span className="text-red-400 font-bold mt-4 block text-2xl md:text-3xl">"사장님, 이거 다 감당 가능하세요?"</span>
+                        매달 쌓이는 구독료, 끝없는 프롬프트 학습, 불안정한 퀄리티.<br />
+                        단순히 툴을 구독하는 것만으로는 문제를 해결할 수 없습니다.<br className="hidden md:block" />
+                        <span className="text-white font-bold mt-4 block text-2xl md:text-3xl">복잡한 기술 학습 비용과 시행착오, HumanLab AI가 0으로 만들어 드립니다.</span>
                     </p>
                 </motion.div>
             </div>

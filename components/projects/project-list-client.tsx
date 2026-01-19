@@ -1,92 +1,83 @@
 "use client";
 
 import Link from "next/link";
-
-import { ProjectCard } from "@/components/projects/project-card";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { Project } from "@prisma/client";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Project } from "@/constants/projectsData";
 
 interface ProjectsClientProps {
-    initialProjects: any[]; // Using any[] temporarily or define proper type extending Project
+    initialProjects: Project[];
 }
 
-const filters = ["ALL", "ACTIVE", "GROWING", "DEVELOPING"];
-
 export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
-    const [filter, setFilter] = useState("ALL");
-
-    const filteredProjects = filter === "ALL"
-        ? initialProjects
-        : initialProjects.filter(p => p.status === filter);
-
     return (
-        <div className="min-h-screen bg-black pt-32 pb-24">
+        <div className="min-h-screen bg-black pt-24 pb-24">
             <div className="container mx-auto px-4">
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 border-b border-white/10 pb-8">
                     <div>
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-6">
-                            OUR ENTITIES
+                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white mb-2">
+                            HUMANLAB<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+                                IP UNIVERSE
+                            </span>
                         </h1>
-                        <p className="text-xl text-gray-400 max-w-2xl">
-                            단순히 캐릭터를 '만드는' 것이 아닙니다.<br />
-                            우리는 그들에게 직업과 역사, 그리고 '삶'을 부여합니다.
-                        </p>
                     </div>
-
-                    {/* Simple Filter */}
-                    <div className="flex gap-2 flex-wrap">
-                        {filters.map(f => (
-                            <button
-                                key={f}
-                                onClick={() => setFilter(f)}
-                                className={cn(
-                                    "px-4 py-2 rounded-full border text-xs font-bold transition-all",
-                                    filter === f ? "bg-white text-black border-white" : "text-gray-500 border-zinc-800 hover:border-zinc-600"
-                                )}
-                            >
-                                {f}
-                            </button>
-                        ))}
+                    <div className="text-right">
+                        <p className="text-xl font-mono text-gray-500">
+                            7 CORE LINEUPS<br />
+                            EXPANDING REALITY
+                        </p>
                     </div>
                 </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {/* [LUMINA SPECIAL CARD] */}
-                    <Link
-                        href="/projects/lumina"
-                        className="group relative col-span-1 md:col-span-2 lg:col-span-2 aspect-video rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-500 shadow-2xl"
-                    >
-                        <div className="absolute inset-0 bg-gray-900 animate-pulse" /> {/* Loading Placeholder */}
-                        <img
-                            src="/images/lumina/main_poster.jpg"
-                            alt="LUMINA: FRACTURE"
-                            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
+                {/* Bento Grid */}
+                {/* Grid Template: Mobile 1 col, Tablet 3 cols (Bento) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
+                    {initialProjects.map((project) => (
+                        <Link
+                            key={project.id}
+                            href={`/projects/${project.id}`}
+                            className={`relative group rounded-3xl overflow-hidden border border-white/10 bg-zinc-900 ${project.gridArea}`}
+                        >
+                            {/* Background Image */}
+                            <div className="absolute inset-0">
+                                <motion.img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700 ease-out"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-opacity duration-500 group-hover:opacity-40" />
+                            </div>
 
-                        <div className="absolute bottom-0 left-0 p-8 z-10">
-                            <span className="inline-block px-3 py-1 bg-blue-600/20 border border-blue-500/50 rounded-full text-blue-400 text-xs font-bold tracking-widest mb-3 backdrop-blur-md">
-                                ● NEW RELEASE
-                            </span>
-                            <h2 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight group-hover:text-blue-200 transition-colors">
-                                PROJECT: LUMINA
-                            </h2>
-                            <p className="text-gray-300 text-lg font-light max-w-lg group-hover:text-white transition-colors">
-                                Virtual K-Pop Group "FRACTURE"<br />
-                                <span className="text-sm opacity-60">우리는 셋이지만, 사실 하나다.</span>
-                            </p>
-                        </div>
+                            {/* Content */}
+                            <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+                                {/* Top Badge */}
+                                <div className="flex justify-between items-start">
+                                    <span className={`text-[10px] font-bold tracking-widest px-2 py-1 rounded border backdrop-blur-md uppercase ${project.type === 'HYPER-REALISM'
+                                        ? 'bg-blue-500/20 text-blue-400 border-blue-500/30'
+                                        : 'bg-purple-500/20 text-purple-400 border-purple-500/30'
+                                        }`}>
+                                        [{project.type}]
+                                    </span>
 
-                        <div className="absolute top-8 right-8 z-10 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 group-hover:bg-white group-hover:text-black transition-all">
-                            <span className="text-2xl">↗</span>
-                        </div>
-                    </Link>
+                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                                        <ArrowUpRight className="text-white w-5 h-5" />
+                                    </div>
+                                </div>
 
-                    {filteredProjects.map(project => (
-                        <ProjectCard key={project.id} project={project} />
+                                {/* Bottom Info */}
+                                <div>
+                                    <h3 className="text-sm font-mono text-gray-400 mb-1">{project.category}</h3>
+                                    <h2 className="text-3xl md:text-5xl font-black text-white leading-none mb-4 tracking-tight">
+                                        {project.title}
+                                    </h2>
+                                    <p className="text-gray-300 text-sm md:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-2">
+                                        {project.desc}
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             </div>

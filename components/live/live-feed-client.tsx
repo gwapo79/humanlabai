@@ -129,75 +129,70 @@ const getIcon = (source: string) => {
 export function LiveFeedClient({ initialActivities }: { initialActivities?: any[] }) {
     // Force use MOCK_PROJECTS for "Data Injection Only"
     return (
-        <div className="py-12 space-y-8">
+        <div className="py-12 space-y-0">
             {MOCK_PROJECTS.map((item, index) => (
                 <motion.div
                     key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative flex gap-6 md:gap-12 group"
+                    viewport={{ once: true, margin: "-20px" }}
+                    transition={{ delay: index * 0.05 }}
+                    className="group py-8 border-b border-white/10 hover:bg-white/5 transition-colors px-4 md:px-8 -mx-4 md:-mx-8"
                 >
-                    {/* [ORIGINAL] Date Column */}
-                    <div className="hidden md:flex flex-col items-end w-32 pt-2 space-y-1">
-                        <span className="text-xl font-bold text-white tracking-tighter">{item.date.split('.').slice(1).join('.')}</span>
-                        <span className="text-xs text-gray-500">{item.date.split('.')[0]}</span>
-                    </div>
+                    <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8">
+                        {/* 1. Date (Left Column) */}
+                        <div className="w-full md:w-32 flex-shrink-0 flex items-center md:block gap-3">
+                            <span className="text-lg md:text-xl font-bold text-humanlab-neon tracking-tighter block">
+                                {item.date.split('.').slice(1).join('.')}
+                            </span>
+                            <span className="text-sm text-gray-500 font-mono block">
+                                {item.date.split('.')[0]}
+                            </span>
+                        </div>
 
-                    {/* [ORIGINAL] Timeline Line */}
-                    <div className="absolute left-6 md:left-40 top-0 bottom-0 w-px bg-white/10 group-last:bottom-auto group-last:h-full">
-                        <div className="absolute top-3 -left-[5px] w-[11px] h-[11px] rounded-full bg-black border-2 border-white/20 group-hover:border-white transition-colors"></div>
-                    </div>
-
-                    {/* [ORIGINAL] Card Content */}
-                    <div className="flex-1 ml-12 md:ml-0 pb-12">
-                        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="p-2 rounded-full bg-white/5 text-white">
+                        {/* 2. Content (Right Column - 100% Text) */}
+                        <div className="flex-1 min-w-0">
+                            <div className="flex flex-wrap items-center gap-3 mb-2">
+                                <span className="flex items-center gap-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider bg-white/5 px-2 py-1 rounded border border-white/5">
                                     {getIcon(item.source)}
+                                    {item.source}
                                 </span>
-                                <span className="text-sm font-bold text-gray-400 uppercase tracking-wider">{item.source}</span>
-                                <span className="text-xs font-bold text-blue-400 px-2 py-0.5 border border-blue-500/30 rounded bg-blue-500/10">
+                                <span className="text-xs font-bold text-blue-400 px-2 py-1 border border-blue-500/30 rounded bg-blue-500/10">
                                     {item.category}
                                 </span>
-                                <div className="flex gap-2 ml-auto">
-                                    {item.tags.map(tag => (
-                                        <span key={tag} className="text-[10px] font-mono border border-white/10 px-2 py-0.5 rounded text-gray-500">
-                                            #{tag}
-                                        </span>
-                                    ))}
-                                </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors leading-tight">
                                 {item.title}
                             </h3>
-                            <p className="text-gray-400 leading-relaxed mb-4">
+
+                            <p className="text-gray-400 text-lg leading-relaxed mb-4 max-w-3xl">
                                 {item.desc}
                             </p>
 
-                            {/** 
-                             * [NEW] Image Injection 
-                             * Maintaining original structure but inserting image block securely.
-                             */}
-                            <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mt-6 border border-white/5">
-                                <Image
-                                    src={item.image}
-                                    alt={item.title}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div className="flex gap-2">
+                                {item.tags.map(tag => (
+                                    <span key={tag} className="text-xs font-mono text-gray-600 group-hover:text-gray-400 transition-colors">
+                                        #{tag}
+                                    </span>
+                                ))}
                             </div>
+                        </div>
+
+                        {/* 3. Arrow Icon (Right aligned) */}
+                        <div className="hidden md:flex items-center justify-end w-12 opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-2">
+                            <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
                         </div>
                     </div>
                 </motion.div>
             ))}
 
-            <div className="text-center pt-12">
-                <span className="text-gray-600 text-sm">최근 로그의 마지막입니다. <br />이전 기록은 DB에 아카이빙되었습니다.</span>
+            <div className="text-center pt-20 pb-12">
+                <span className="text-gray-600 text-sm font-mono tracking-widest uppercase">
+                    End of Activity Logs
+                </span>
             </div>
         </div>
     );

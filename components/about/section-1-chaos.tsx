@@ -38,12 +38,12 @@ export function Section1Chaos() {
                     className="max-w-4xl"
                 >
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight leading-tight">
-                        직원 뽑기엔 부담스럽고,<br />
-                        직접 하자니 막막하지 않으신가요?
+                        최고의 팀을 채용하는<br />
+                        가장 합리적인 방법
                     </h2>
                     <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light break-keep">
-                        마케터, 디자이너, 대행사... 챙겨야 할 건 너무 많은데 인건비와 관리 비용은 계속 오릅니다.<br className="hidden md:block" />
-                        사장님은 <strong>'장사'</strong>만 하기에도 시간이 부족합니다.
+                        마케터, 디자이너, 개발자... 비즈니스 확장에 필요한 전문 인력, 직접 채용하고 관리하기엔 리스크가 큽니다.<br className="hidden md:block" />
+                        대표님은 비즈니스의 <strong>'본질'</strong>에만 집중하십시오. 나머지 실행은 HumanLab AI가 전담합니다.
                     </p>
                 </motion.div>
             </div>
