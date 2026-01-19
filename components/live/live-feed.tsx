@@ -1,5 +1,5 @@
 // components/live/live-feed.tsx
-// [Prisma 제거 및 정적 데이터로 대체]
+
 
 export default function LiveFeed() {
     // 임시 더미 데이터 (빌드 에러 방지용)
