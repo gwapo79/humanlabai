@@ -17,13 +17,15 @@ export function AdStoryCard({ story }: AdStoryCardProps) {
     const isToday = today.toDateString() === storyDate.toDateString();
 
     // Category Colors (for visual distinction)
-    const categoryColor: Record<string, string> = {
+    const categoryColorMap: Record<string, string> = {
         'TREND_2026': 'text-pink-500 border-pink-500/30 bg-pink-500/10',
         'AI_MARKETING': 'text-blue-500 border-blue-500/30 bg-blue-500/10',
         'UX_PSYCHOLOGY': 'text-purple-500 border-purple-500/30 bg-purple-500/10',
         'BRAND_STRATEGY': 'text-yellow-500 border-yellow-500/30 bg-yellow-500/10',
         'CULTURE': 'text-green-500 border-green-500/30 bg-green-500/10',
-    }[story.category] || 'text-gray-500 border-gray-500/30 bg-gray-500/10';
+    };
+
+    const categoryColor = categoryColorMap[story.category] || 'text-gray-500 border-gray-500/30 bg-gray-500/10';
 
     return (
         <Link href={`/ad-stories/${story.id}`}>
