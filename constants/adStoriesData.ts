@@ -10,7 +10,7 @@ export type AdStoryCategory =
 export interface AdStory {
   id: string;
   date: string;
-  category: AdStoryCategory;
+  category: string;
   title: string;
   summary: string;
   content: string; // Generated HTML
@@ -24,7 +24,7 @@ export interface AdStory {
 interface StoryConfig {
   id: string;
   date: string;
-  category: AdStoryCategory;
+  category: string;
   title: string;
   summary: string;
   tags: string[];
