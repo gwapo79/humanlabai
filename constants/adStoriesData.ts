@@ -1,6 +1,11 @@
 // [HumanLab AI Content Manifesto: Absolute Standards applied]
 
-export type AdStoryCategory = 'TREND_2026' | 'AI_MARKETING' | 'UX_PSYCHOLOGY' | 'BRAND_STRATEGY' | 'CULTURE';
+export type AdStoryCategory =
+  | 'TREND_2026'
+  | 'AI_MARKETING'
+  | 'UX_PSYCHOLOGY'
+  | 'BRAND_STRATEGY'
+  | 'CULTURE';
 
 export interface AdStory {
   id: string;
