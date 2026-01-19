@@ -5,8 +5,8 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Lock, FileText, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { LUMINA_LORE, LUMINA_MEDIA, SOCIAL_LINKS } from "@/constants/luminaLore";
-import { LuminaMediaSection } from "@/components/projects/lumina-media-section";
+import { LUMINA_LORE } from "@/constants/luminaLore";
+import { LuminaShowcase } from "@/components/projects/lumina-showcase";
 
 export default function LuminaProjectPage() {
     const [activeTab, setActiveTab] = useState<number>(0);
@@ -236,8 +236,8 @@ export default function LuminaProjectPage() {
                 </div>
             </section>
 
-            {/* MEDIA SECTION */}
-            <LuminaMediaSection mediaItems={LUMINA_MEDIA} socialLinks={SOCIAL_LINKS} />
+            {/* SHOWCASE SECTION */}
+            <LuminaShowcase />
         </div >
     );
 }

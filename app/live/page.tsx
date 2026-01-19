@@ -1,4 +1,4 @@
-import LiveFeed from "@/components/live/live-feed";
+import { LiveFeed } from "@/components/live/live-feed";
 import { LiveFilter } from "@/components/live/live-filter";
 
 export default function LivePage() {

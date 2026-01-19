@@ -38,12 +38,13 @@ export function Section1Chaos() {
                     className="max-w-4xl"
                 >
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight leading-tight">
-                        최고의 팀을 채용하는<br />
-                        가장 합리적인 방법
+                        시작과 끝은 '사람'이,<br />
+                        그 사이의 속도는 'AI'가 채웁니다.
                     </h2>
                     <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light break-keep">
-                        마케터, 디자이너, 개발자... 비즈니스 확장에 필요한 전문 인력, 직접 채용하고 관리하기엔 리스크가 큽니다.<br className="hidden md:block" />
-                        대표님은 비즈니스의 <strong>'본질'</strong>에만 집중하십시오. 나머지 실행은 HumanLab AI가 전담합니다.
+                        AI 툴 구독료와 프롬프트 학습에 시간을 낭비하지 마세요.<br className="hidden md:block" />
+                        HumanLab AI는 기업에 딱 맞는 <strong className="font-bold text-humanlab-neon">'기획(Kick)'</strong>과 검증된 <strong className="font-bold text-humanlab-neon">'퀄리티'</strong>만 남기고,<br className="hidden md:block" />
+                        복잡하고 비싼 제작 과정은 AI로 압축하여 가장 합리적인 결과를 드립니다.
                     </p>
                 </motion.div>
             </div>

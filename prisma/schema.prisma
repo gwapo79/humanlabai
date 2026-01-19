@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // Changing to sqlite for local dev ease, or postgres
+  url      = "file:./dev.db"
+}
+
+// --------------------------------------
+// [AUTH] Admin & Users
+// --------------------------------------
+// SQLite doesn't support Enums, so we use String
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String?  // Hashed
+  role      String     @default("USER") // USER, ADMIN, SUPER_ADMIN
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// --------------------------------------
+// [LIVE] Activity Log
+// --------------------------------------
+model LiveActivity {
+  id          String   @id @default(cuid())
+  source      String   // "Instagram", "YouTube", "Log"
+  title       String
+  description String
+  date        DateTime @default(now())
+  tags        String   // Stored as CSV or JSON string since SQLite doesn't support arrays well
+  createdAt   DateTime @default(now())
+}
+
+// --------------------------------------
+// [PROJECTS] IP & Portfolio
+// --------------------------------------
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique // e.g. "lumina"
+  title       String
+  category    String
+  desc        String
+  type        String   // "VIRTUAL IDOL"
+  image       String
+  gridArea    String   // "md:col-span-2"
+  
+  // Relations
+  mediaAssets MediaAsset[]
+}
+
+model MediaAsset {
+  id          String    @id @default(cuid())
+  type        String    // VIDEO_TVC, VIDEO_SHORTS, AUDIO, IMAGE_POSTER, SOCIAL_UGC
+  thumbnail   String
+  src         String?   // Video/Audio URL
+  title       String
+  description String
+  metrics     String?   // JSON string: { views: "1.2M", likes: "45k" }
+  order       Int       @default(0)
+  
+  projectId   String
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+// --------------------------------------
+// [STORIES] Blog & Insight
+// --------------------------------------
+model Post {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  summary     String
+  category    String   // "TREND_2026"
+  content     String   // HTML or JSON (TipTap)
+  tags        String   // JSON string
+  coverImage  String?
+  isFeatured  Boolean  @default(false)
+  publishedAt DateTime @default(now())
+  
+  // Deep Content Fields
+  deepContent String?  // JSON string
+}
+
+// --------------------------------------
+// [LAB] Experiments
+// --------------------------------------
+model LabExperiment {
+  id          String   @id @default(cuid())
+  title       String
+  date        String   // "2026-01-20"
+  category    String   // "GEN_VIDEO"
+  status      String   // "PRODUCTION_READY"
+  techStack   String   // JSON string
+  summary     String
+  content     String   // HTML Report
+  isVisible   Boolean  @default(true)
+}
+
+// --------------------------------------
+// [CONTACT] CRM
+// --------------------------------------
+model Inquiry {
+  id        String   @id @default(cuid())
+  name      String
+  company   String?
+  email     String
+  message   String
+  status    String   @default("NEW") // NEW, READ, REPLIED
+  createdAt DateTime @default(now())
+}

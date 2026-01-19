@@ -1,77 +1,63 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Edit, Image as ImageIcon } from "lucide-react";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Edit2, Plus, ArrowRight } from "lucide-react";
 
-// Mock Data
-const initialProjects = [
-    { id: 1, title: "LUMINA", category: "METAHUMAN", status: "GROWING" },
-    { id: 2, title: "PETKAGE", category: "BRAND CHARACTER", status: "ACTIVE" },
-    { id: 3, title: "Dr. K", category: "AI EXPERT", status: "DEVELOPING" },
-    { id: 4, title: "Chunsik Store", category: "LOCAL BRAND", status: "ACTIVE" },
+// Mock Data (will be replaced with real data fetch)
+const PROJECTS = [
+    { id: 'lumina', title: 'LUMINA', category: 'VIRTUAL IDOL', status: 'Active', image: '/images/lumina/main_poster.jpg' },
+    { id: 'lumis', title: 'LUMIS', category: 'AI COMPANION', status: 'Dev', image: 'https://images.unsplash.com/photo-1616499370260-485b3e5ed653' },
+    { id: 'real-pets', title: 'THE COMPANIONS', category: 'DIGITAL ANIMALS', status: 'Active', image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee' },
 ];
 
-export default function AdminProjectsPage() {
-    const [projects, setProjects] = useState(initialProjects);
-
-    const toggleStatus = (id: number) => {
-        setProjects(projects.map(p => {
-            if (p.id === id) {
-                const newStatus = p.status === "ACTIVE" ? "GROWING" : "ACTIVE";
-                return { ...p, status: newStatus };
-            }
-            return p;
-        }));
-    };
-
+export default function ProjectManager() {
     return (
         <div className="space-y-8">
-            <h1 className="text-3xl font-bold">Project Manager</h1>
+            <div className="flex justify-between items-end">
+                <div>
+                    <h2 className="text-3xl font-bold tracking-tight text-white mb-2">Project IP</h2>
+                    <p className="text-gray-400">휴먼랩 AI 지식재산권(IP) 통합 관리</p>
+                </div>
+                <button className="flex items-center gap-2 bg-humanlab-neon text-black px-4 py-2 rounded font-bold hover:bg-humanlab-neon/80">
+                    <Plus className="w-4 h-4" /> New Project
+                </button>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project) => (
-                    <div key={project.id} className="bg-zinc-900 border border-white/10 p-6 rounded-2xl relative group">
-                        <div className="flex justify-between items-start mb-4">
-                            <div>
-                                <span className="text-xs text-gray-500 font-mono block mb-1">{project.category}</span>
-                                <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                            </div>
-                            <div className={`px-2 py-1 rounded text-[10px] font-bold border ${getContentColor(project.status)}`}>
-                                {project.status}
+                {PROJECTS.map((project) => (
+                    <Card key={project.id} className="bg-zinc-900 border-white/10 overflow-hidden group hover:border-white/30 transition-colors">
+                        <div className="relative aspect-video bg-black">
+                            <img src={project.image} alt={project.title} className="object-cover w-full h-full opacity-60 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute top-4 left-4">
+                                <Badge className="bg-black/50 backdrop-blur border-white/20 text-white hover:bg-black/80">
+                                    {project.category}
+                                </Badge>
                             </div>
                         </div>
+                        <CardContent className="p-6">
+                            <div className="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
+                                    <div className="flex items-center gap-2 text-xs text-humanlab-neon">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-humanlab-neon animate-pulse" />
+                                        {project.status.toUpperCase()}
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div className="flex gap-2 mt-8">
-                            <Button
-                                size="sm"
-                                variant="outline"
-                                className="w-full border-white/10 hover:bg-white/10 text-gray-300"
-                                onClick={() => toggleStatus(project.id)}
-                            >
-                                <Edit className="w-3 h-3 mr-2" /> Change Status
-                            </Button>
-                            <Button size="sm" variant="ghost" className="border border-white/10 hover:bg-white/10">
-                                <ImageIcon className="w-3 h-3" />
-                            </Button>
-                        </div>
-                    </div>
+                            <div className="flex gap-2">
+                                <Link href={`/admin/projects/${project.id}`} className="flex-1">
+                                    <button className="w-full py-3 bg-white/5 border border-white/10 rounded font-bold text-gray-300 hover:bg-white hover:text-black flex items-center justify-center gap-2 transition-all">
+                                        <Edit2 className="w-4 h-4" /> MANAGE ASSETS
+                                    </button>
+                                </Link>
+                            </div>
+                        </CardContent>
+                    </Card>
                 ))}
-
-                {/* Add New Placeholder */}
-                <div className="border border-dashed border-white/20 rounded-2xl flex items-center justify-center p-6 hover:bg-white/5 cursor-pointer transition-colors min-h-[180px]">
-                    <span className="text-gray-500 text-sm font-medium">+ Add New Project</span>
-                </div>
             </div>
         </div>
     );
-}
-
-function getContentColor(status: string) {
-    switch (status) {
-        case "ACTIVE": return "text-green-500 border-green-500/20 bg-green-500/10";
-        case "GROWING": return "text-blue-500 border-blue-500/20 bg-blue-500/10";
-        case "DEVELOPING": return "text-yellow-500 border-yellow-500/20 bg-yellow-500/10";
-        default: return "text-gray-500";
-    }
 }

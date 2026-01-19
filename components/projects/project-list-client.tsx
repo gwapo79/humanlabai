@@ -16,14 +16,18 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 border-b border-white/10 pb-8">
                     <div>
-                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white mb-2">
-                            HUMANLAB<br />
+                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white mb-4">
+                            HumanLab<br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-                                IP UNIVERSE
+                                Universe
                             </span>
                         </h1>
+                        <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
+                            매력적인 캐릭터 IP로 만들어가는 무한한 확장,<br />
+                            우리의 이야기는 여기서 시작됩니다.
+                        </p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right hidden md:block">
                         <p className="text-xl font-mono text-gray-500">
                             7 CORE LINEUPS<br />
                             EXPANDING REALITY

@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
+
 
 export const metadata: Metadata = {
   title: "HumanLab AI",
@@ -26,7 +22,7 @@ export default function RootLayout({
     <html lang="ko" className="dark">
       <body
         suppressHydrationWarning
-        className={`${inter.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
+        className={`font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
         <Header />
         <main className="flex-1 pt-16">

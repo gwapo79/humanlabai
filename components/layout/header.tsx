@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -27,9 +28,14 @@ export function Header() {
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2">
-                    <span className="text-xl font-bold tracking-tighter text-white">
-                        HUMANLAB <span className="text-gray-400">AI</span>
-                    </span>
+                    <Image
+                        src="/images/Logo_humanlabAI.png"
+                        alt="HumanLab AI Logo"
+                        width={180}
+                        height={50}
+                        className="object-contain"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Nav */}

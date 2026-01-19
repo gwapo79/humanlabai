@@ -1,76 +1,58 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Plus, Edit, Trash2 } from "lucide-react";
+import { Plus, Edit3, Eye } from "lucide-react";
 
 // Mock Data
-const initialStories = [
-    { id: 1, title: "버추얼 알바로 방문객 300% 증가시키기", client: "Coffee Chain A", date: "2025.10.12", status: "PUBLISHED" },
-    { id: 2, title: "'그냥 로고'를 '살아있는 마스코트'로 바꾸다", client: "Fashion Brand B", date: "2025.11.05", status: "PUBLISHED" },
-    { id: 3, title: "LUMINA 런웨이: 현실과 디지털의 경계를 허물다", client: "Tech Giant C", date: "2025.12.01", status: "DRAFT" },
+const STORIES = [
+    { id: '1', title: "검색창이 사라진 시대: SEO는 죽었고 AIO가 왔다", category: "TREND_2026", date: "2026-01-19", status: "Published" },
+    { id: '2', title: "도파민 2.5초의 법칙: 뇌를 해킹하지 못하면 죽은 광고다", category: "UX_PSYCHOLOGY", date: "2026-01-18", status: "Published" },
+    { id: '3', title: "불완전함이 럭셔리가 된다: AI 시대의 역설", category: "BRAND_STRATEGY", date: "2026-01-17", status: "Draft" },
 ];
 
-export default function AdminAdStoriesPage() {
-    const [stories, setStories] = useState(initialStories);
-
-    const handleDelete = (id: number) => {
-        if (confirm("정말 삭제하시겠습니까?")) {
-            setStories(stories.filter(s => s.id !== id));
-        }
-    };
-
+export default function StoryManager() {
     return (
         <div className="space-y-8">
-            <div className="flex justify-between items-center">
-                <h1 className="text-3xl font-bold">Ad Stories Manager</h1>
-                <Link href="/admin/ad-stories/editor">
-                    <Button className="bg-white text-black hover:bg-gray-200 font-bold gap-2">
-                        <Plus className="w-4 h-4" /> New Story
+            <div className="flex justify-between items-end">
+                <div>
+                    <h2 className="text-3xl font-bold tracking-tight text-white mb-2">Ad Stories</h2>
+                    <p className="text-gray-400">인사이트 아티클 및 블로그 관리</p>
+                </div>
+                <Link href="/admin/ad-stories/editor/new">
+                    <Button className="bg-humanlab-neon text-black font-bold">
+                        <Plus className="w-4 h-4 mr-2" /> New Story
                     </Button>
                 </Link>
             </div>
 
-            <div className="bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden">
-                <table className="w-full text-left text-sm">
-                    <thead className="bg-white/5 text-gray-400 font-medium">
-                        <tr>
-                            <th className="px-6 py-4">TITLE</th>
-                            <th className="px-6 py-4">CLIENT</th>
-                            <th className="px-6 py-4">DATE</th>
-                            <th className="px-6 py-4">STATUS</th>
-                            <th className="px-6 py-4 text-right">ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5">
-                        {stories.map((story) => (
-                            <tr key={story.id} className="hover:bg-white/5 transition-colors">
-                                <td className="px-6 py-4 font-bold text-white mb-1">{story.title}</td>
-                                <td className="px-6 py-4 text-gray-400">{story.client}</td>
-                                <td className="px-6 py-4 text-gray-500 font-mono text-xs">{story.date}</td>
-                                <td className="px-6 py-4">
-                                    <span className={`px-2 py-1 rounded text-[10px] font-bold border ${story.status === 'PUBLISHED' ? 'text-green-500 border-green-500/20' : 'text-gray-500 border-gray-500/20'}`}>
-                                        {story.status}
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 text-right flex justify-end gap-2">
-                                    <Link href={`/admin/ad-stories/editor?id=${story.id}`}>
-                                        <button className="p-2 hover:bg-white/10 rounded text-blue-400">
-                                            <Edit className="w-4 h-4" />
-                                        </button>
-                                    </Link>
-                                    <button
-                                        onClick={() => handleDelete(story.id)}
-                                        className="p-2 hover:bg-white/10 rounded text-red-400"
-                                    >
-                                        <Trash2 className="w-4 h-4" />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className="rounded-md border border-white/10 bg-zinc-900/50">
+                {STORIES.map((story) => (
+                    <div key={story.id} className="flex items-center justify-between p-4 border-b border-white/5 last:border-none hover:bg-white/5 transition-colors">
+                        <div className="space-y-1">
+                            <div className="flex items-center gap-2">
+                                <Badge variant="outline" className="text-[10px] text-humanlab-neon border-humanlab-neon/30">{story.category}</Badge>
+                                {story.status === 'Draft' && <Badge variant="secondary" className="text-[10px]">Draft</Badge>}
+                            </div>
+                            <h3 className="font-bold text-white text-lg">{story.title}</h3>
+                            <p className="text-xs text-gray-500">{story.date}</p>
+                        </div>
+                        <div className="flex gap-2">
+                            <Link href={`/ad-stories/${story.id}`} target="_blank">
+                                <Button size="icon" variant="ghost" className="text-gray-500 hover:text-white">
+                                    <Eye className="w-4 h-4" />
+                                </Button>
+                            </Link>
+                            <Link href={`/admin/ad-stories/editor/${story.id}`}>
+                                <Button size="sm" variant="outline" className="text-white border-white/20 hover:bg-white hover:text-black">
+                                    <Edit3 className="w-4 h-4 mr-2" /> Edit
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
