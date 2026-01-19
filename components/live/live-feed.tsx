@@ -5,7 +5,7 @@ export async function LiveFeed() {
     // 1. Fetch from DB
     // 2. If failure or empty, handle gracefully (Component handles empty array)
 
-    let activities = [];
+    let activities: any[] = [];
     try {
         const logs = await prisma.activityLog.findMany({
             orderBy: { publishedAt: 'desc' },
