@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Project } from "@/constants/projectsData";
+import { ProjectItem } from "@/constants/projectsData";
 
 interface ProjectsClientProps {
-    initialProjects: Project[];
+    initialProjects: ProjectItem[];
 }
 
 export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
