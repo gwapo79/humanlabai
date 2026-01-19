@@ -5,8 +5,8 @@ export interface LabNote {
     id: string;
     date: string; // 2026-XX-XX
     title: string; // Technical Title
-    category: LabCategory;
-    status: LabStatus; // Badges
+    category: string;
+    status: string; // Badges
     techStack: string[]; // Tools used
     summary: string; // 1-line summary
     content: string; // HTML Report
