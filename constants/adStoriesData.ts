@@ -405,7 +405,7 @@ const STORY_DB: StoryConfig[] = [
     return {
       id,
       date: `2025-12-${30 - i}`,
-      category: i % 2 === 0 ? 'UX_PSYCHOLOGY' : 'TREND_2026',
+      category: (i % 2 === 0 ? 'UX_PSYCHOLOGY' : 'TREND_2026') as AdStoryCategory,
       title: `${topics[i] || 'AI Insight'}: 2026년 생존 전략`,
       summary: "변화하는 시장에서 살아남기 위한 HumanLab만의 심층 분석.",
       tags: ["#Insight", "#Future"],
