@@ -22,12 +22,15 @@ export default async function AdStoryDetailPage(props: PageProps) {
         notFound();
     }
 
-    const categoryColor = {
+    const categoryColorMap: Record<string, string> = {
         'TREND_2026': 'text-pink-400 bg-pink-500/10 border-pink-500/20',
         'AI_MARKETING': 'text-blue-400 bg-blue-500/10 border-blue-500/20',
         'UX_PSYCHOLOGY': 'text-purple-400 bg-purple-500/10 border-purple-500/20',
-        'BRAND_STRATEGY': 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-    }[story.category] || 'text-gray-400 bg-gray-500/10 border-gray-500/20';
+        'BRAND_STRATEGY': 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20',
+        'CULTURE': 'text-green-400 bg-green-500/10 border-green-500/20',
+    };
+
+    const categoryColor = categoryColorMap[story.category] || 'text-gray-400 bg-gray-500/10 border-gray-500/20';
 
     return (
         <>
