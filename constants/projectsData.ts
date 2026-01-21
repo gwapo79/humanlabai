@@ -20,6 +20,17 @@ export const PROJECTS: ProjectItem[] = [
         image: "/images/lumina/main_poster.jpg" // 로컬 파일 유지
     },
 
+    // [New] Atelier 26 (New IP)
+    {
+        id: 'atelier-26',
+        title: "ATELIER 26",
+        category: "ANIMATION CHARACTER IP",
+        desc: "초보 집사와 5인의 사고뭉치 동물들의 이중생활 모험기",
+        type: "STYLIZED 3D",
+        gridArea: "md:col-span-2 md:row-span-1",
+        image: "/images/atelier26/hero_wide.webp"
+    },
+
     // [2] LUMIS (Mascots) - 3D 귀여운 로봇/캐릭터 느낌
     {
         id: 'lumis',
