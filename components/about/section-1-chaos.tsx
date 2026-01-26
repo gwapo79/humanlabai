@@ -36,7 +36,7 @@ export function Section1Chaos() {
                     className="max-w-5xl"
                 >
                     {/* 메인 제목: 묵직하고 신뢰감 있는 타이포그래피 */}
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-10 tracking-tighter leading-tight">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-10 tracking-tighter leading-tight">
                         결정적 기획은 <span className="text-humanlab-neon">'사람'</span>이 하고,<br />
                         압도적 속도는 <span className="text-humanlab-neon">'AI'</span>가 만듭니다.
                     </h2>

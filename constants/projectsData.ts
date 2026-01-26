@@ -2,10 +2,13 @@ export interface ProjectItem {
     id: string;
     title: string;
     category: string;
+    slogan: string;
     desc: string;
+    techStack: string[];
     type: 'HYPER-REALISM' | 'STYLIZED 3D' | 'VIRTUAL IDOL' | 'VIRTUAL K-POP GROUP' | 'AI COMPANION' | 'DIGITAL ANIMALS' | 'METAVERSE AVATAR' | '3D MASCOT ASSETS' | 'AI KIDS MODEL' | 'ANIMATION CHARACTER';
     gridArea: string;
     image: string;
+    videoPreview?: string;
 }
 
 export const PROJECTS: ProjectItem[] = [
@@ -14,10 +17,13 @@ export const PROJECTS: ProjectItem[] = [
         id: 'lumina',
         title: "LUMINA",
         category: "VIRTUAL K-POP GROUP",
-        desc: "완벽하지 않아서 더 인간적인, 성장형 AI 아이돌 그룹",
+        slogan: "완벽하지 않아서 더 인간적인",
+        desc: "불완전함 속에서 피어나는 아이돌의 성장 서사",
+        techStack: ["#UnrealEngine5", "#MetaHuman", "#MotionCapture"],
         type: "VIRTUAL IDOL",
         gridArea: "md:col-span-2 md:row-span-2",
-        image: "/images/lumina/main_poster.jpg" // 로컬 파일 유지
+        image: "/images/lumina/main_poster.jpg", // 로컬 파일 유지
+        videoPreview: "/videos/lumina_preview.mp4" // Placeholder
     },
 
     // [New] Atelier 26 (New IP)
@@ -25,10 +31,13 @@ export const PROJECTS: ProjectItem[] = [
         id: 'atelier-26',
         title: "ATELIER 26",
         category: "ANIMATION CHARACTER IP",
-        desc: "초보 집사와 5인의 사고뭉치 동물들의 이중생활 모험기",
+        slogan: "동물들의 이중생활 모험기",
+        desc: "초보 집사와 5인의 사고뭉치 동물들이 펼치는 좌충우돌 에피소드",
+        techStack: ["#Blender", "#ToonShading", "#CharacterRigging"],
         type: "STYLIZED 3D",
         gridArea: "md:col-span-2 md:row-span-1",
-        image: "/images/atelier26/hero_wide.webp"
+        image: "/images/atelier26/hero_wide.webp",
+        videoPreview: "/videos/atelier26_preview.mp4"
     },
 
     // [2] LUMIS (Mascots) - 3D 귀여운 로봇/캐릭터 느낌
@@ -36,7 +45,9 @@ export const PROJECTS: ProjectItem[] = [
         id: 'lumis',
         title: "LUMIS",
         category: "AI COMPANION",
-        desc: "당신의 감정을 읽고 반응하는 디지털 소울메이트",
+        slogan: "디지털 소울메이트",
+        desc: "당신의 감정을 읽고 반응하는 반려 로봇 친구",
+        techStack: ["#Three.js", "#WebGL", "#AI_Chatbot"],
         type: "STYLIZED 3D",
         gridArea: "md:col-span-1 md:row-span-1",
         // Cute 3D Robot Toy concept
@@ -48,7 +59,9 @@ export const PROJECTS: ProjectItem[] = [
         id: 'real-pets',
         title: "THE COMPANIONS",
         category: "DIGITAL ANIMALS",
-        desc: "털 한 올, 숨소리까지 구현된 실사 반려동물",
+        slogan: "영원히 곁에 머무는 친구",
+        desc: "털 한 올, 숨소리까지 구현된 하이퍼 리얼리즘 반려동물",
+        techStack: ["#StableDiffusion", "#LoRA", "#Img2Img"],
         type: "HYPER-REALISM",
         gridArea: "md:col-span-1 md:row-span-1",
         // Hyper realistic dog portrait
@@ -60,7 +73,9 @@ export const PROJECTS: ProjectItem[] = [
         id: '3d-humans',
         title: "META HUMANOIDS",
         category: "METAVERSE AVATAR",
-        desc: "게임/메타버스 최적화 3D 인물 캐릭터",
+        slogan: "NEXT GEN AVATAR",
+        desc: "게임과 메타버스를 위한 최적화된 3D 휴먼 캐릭터",
+        techStack: ["#Unity", "#HumanGenerator", "#LowPoly"],
         type: "STYLIZED 3D",
         gridArea: "md:col-span-1 md:row-span-2",
         // Futuristic 3D human/mannequin
@@ -72,7 +87,9 @@ export const PROJECTS: ProjectItem[] = [
         id: '3d-animals',
         title: "TOON ZOO",
         category: "3D MASCOT ASSETS",
-        desc: "브랜드 마스코트용 스타일라이즈드 동물",
+        slogan: "브랜드를 위한 동물 친구들",
+        desc: "어디든 잘 어울리는 스타일라이즈드 3D 동물 에셋",
+        techStack: ["#Cinema4D", "#Redshift", "#Cute3D"],
         type: "STYLIZED 3D",
         gridArea: "md:col-span-1 md:row-span-1",
         // 3D abstract animal/shape
@@ -84,7 +101,9 @@ export const PROJECTS: ProjectItem[] = [
         id: 'real-kids',
         title: "LITTLE MODELS",
         category: "AI KIDS MODEL",
-        desc: "초상권 걱정 없는 광고용 실사 아동 모델",
+        slogan: "가장 순수한 미소",
+        desc: "광고 촬영의 어려움을 해결하는 AI 아동 모델 솔루션",
+        techStack: ["#Midjourney", "#FaceSwap", "#Commercial"],
         type: "HYPER-REALISM",
         gridArea: "md:col-span-2 md:row-span-1",
         // Professional Kid Model
@@ -96,7 +115,9 @@ export const PROJECTS: ProjectItem[] = [
         id: '3d-kids',
         title: "WONDER KIDS",
         category: "ANIMATION CHARACTER",
-        desc: "에듀테크/애니메이션용 3D 키즈 캐릭터",
+        slogan: "꿈꾸는 아이들",
+        desc: "에듀테크와 애니메이션을 위한 3D 키즈 캐릭터",
+        techStack: ["#Maya", "#Arnold", "#CharacterDesign"],
         type: "STYLIZED 3D",
         gridArea: "md:col-span-1 md:row-span-1",
         // 3D Cartoon character vibe

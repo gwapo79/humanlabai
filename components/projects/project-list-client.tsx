@@ -1,89 +1,86 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { ProjectItem } from "@/constants/projectsData";
+import { ProjectCardGallery } from "./project-card-gallery";
 
 interface ProjectsClientProps {
     initialProjects: ProjectItem[];
 }
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.3
+        }
+    }
+};
+
 export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
     return (
-        <div className="min-h-screen bg-black pt-24 pb-24">
-            <div className="container mx-auto px-4">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 border-b border-white/10 pb-8">
-                    <div>
-                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white mb-4">
-                            HumanLab<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-                                Universe
+        <div className="min-h-screen bg-black pt-32 pb-32">
+            <div className="container mx-auto px-4 md:px-8">
+                {/* Header Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-white/10 pb-12"
+                >
+                    <div className="max-w-4xl">
+                        <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white mb-6 font-heading">
+                            HUMANLAB<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-x">
+                                UNIVERSE
                             </span>
                         </h1>
-                        <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
-                            매력적인 캐릭터 IP로 만들어가는 무한한 확장,<br />
-                            우리의 이야기는 여기서 시작됩니다.
+                        <p className="text-xl md:text-2xl text-gray-400 max-w-2xl leading-relaxed font-sans font-light">
+                            단순한 캐릭터가 아닌, 살아 숨 쉬는 <span className="text-white font-semibold">지적 자산(IP)</span>의 세계.<br />
+                            <span className="text-gray-500">우리의 기술과 예술이 만나는 지점을 탐험하세요.</span>
                         </p>
                     </div>
                     <div className="text-right hidden md:block">
-                        <p className="text-xl font-mono text-gray-500">
-                            7 CORE LINEUPS<br />
-                            EXPANDING REALITY
+                        <div className="text-xs font-mono text-blue-500 mb-2 tracking-[0.2em] uppercase">
+                            System Status : All Systems Normal
+                        </div>
+                        <p className="text-xl font-heading font-bold text-white leading-tight">
+                            {initialProjects.length} CORE LINEUPS<br />
+                            <span className="text-gray-500 font-normal">EXPANDING REALITY</span>
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* Bento Grid */}
-                {/* Grid Template: Mobile 1 col, Tablet 3 cols (Bento) */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
-                    {initialProjects.map((project) => (
-                        <Link
+                {/* Gallery Grid (Masonry / Bento) */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[350px]"
+                >
+                    {initialProjects.map((project, index) => (
+                        <ProjectCardGallery
                             key={project.id}
-                            href={`/projects/${project.id}`}
-                            className={`relative group rounded-3xl overflow-hidden border border-white/10 bg-zinc-900 ${project.gridArea}`}
-                        >
-                            {/* Background Image */}
-                            <div className="absolute inset-0">
-                                <motion.img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700 ease-out"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-opacity duration-500 group-hover:opacity-40" />
-                            </div>
-
-                            {/* Content */}
-                            <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
-                                {/* Top Badge */}
-                                <div className="flex justify-between items-start">
-                                    <span className={`text-[10px] font-bold tracking-widest px-2 py-1 rounded border backdrop-blur-md uppercase ${project.type === 'HYPER-REALISM'
-                                        ? 'bg-blue-500/20 text-blue-400 border-blue-500/30'
-                                        : 'bg-purple-500/20 text-purple-400 border-purple-500/30'
-                                        }`}>
-                                        [{project.type}]
-                                    </span>
-
-                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                                        <ArrowUpRight className="text-white w-5 h-5" />
-                                    </div>
-                                </div>
-
-                                {/* Bottom Info */}
-                                <div>
-                                    <h3 className="text-sm font-mono text-gray-400 mb-1">{project.category}</h3>
-                                    <h2 className="text-3xl md:text-5xl font-black text-white leading-none mb-4 tracking-tight">
-                                        {project.title}
-                                    </h2>
-                                    <p className="text-gray-300 text-sm md:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-2">
-                                        {project.desc}
-                                    </p>
-                                </div>
-                            </div>
-                        </Link>
+                            project={project}
+                            index={index}
+                        />
                     ))}
-                </div>
+                </motion.div>
+
+                {/* Bottom Footer Info */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-32 text-center"
+                >
+                    <p className="text-gray-600 font-mono text-sm">
+                        HUMANLAB AI &copy; 2026. ALL RIGHTS RESERVED.<br />
+                        DESIGNED FOR THE FUTURE.
+                    </p>
+                </motion.div>
             </div>
         </div>
     );

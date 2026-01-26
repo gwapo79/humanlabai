@@ -114,7 +114,7 @@ export function Section2Barrier() {
                     transition={{ duration: 0.8 }}
                     className="max-w-4xl bg-black/40 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-2xl"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold text-red-500 mb-8 drop-shadow-2xl leading-tight">
+                    <h2 className="text-4xl md:text-6xl font-bold font-heading text-red-500 mb-8 drop-shadow-2xl leading-tight">
                         AI 도입, '도구'가 아니라<br /> '전문가'가 필요합니다
                     </h2>
 

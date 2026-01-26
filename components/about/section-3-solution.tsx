@@ -34,7 +34,7 @@ export function Section3Solution() {
                     transition={{ duration: 0.8 }}
                     className="max-w-5xl mx-auto text-center"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
+                    <h2 className="text-4xl md:text-6xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
                         기술은 우리가 다룹니다.<br /> 결과만 가져가십시오.
                     </h2>
 
