@@ -9,9 +9,9 @@ const STATES = [
         id: "control",
         name: "SIA",
         title: "CONTROL",
-        subtitle: "The Cooling Mechanism",
-        quote: "She appears not to comfort,\nbut to stop the system from breaking.",
-        desc: "SIA is not designed to be cold.\nShe exists because emotion had to be stopped.",
+        subtitle: "The Defensive Structure",
+        quote: "When CONTROL dominated,\nthe world became silent.",
+        desc: "Result: Defensive Architecture.\nA calculated shutdown of all emotional inputs to prevent collapse.",
         bg: "bg-zinc-950",
         accent: "text-zinc-500",
         style: "contrast-125 grayscale",
@@ -21,9 +21,9 @@ const STATES = [
         id: "sensitivity",
         name: "HAYEON",
         title: "SENSITIVITY",
-        subtitle: "The Permission",
-        quote: "She allows pain to exist.",
-        desc: "HAYEON does not heal.\nShe remembers what others want to forget.",
+        subtitle: "The Raw Input",
+        quote: "When SENSITIVITY surfaced,\nthe dam broke.",
+        desc: "Result: Overwhelming Feedback Loop.\nA state where every stimulus is received without a filter.",
         bg: "bg-stone-900",
         accent: "text-orange-900/50",
         style: "sepia-[0.3]",
@@ -33,9 +33,9 @@ const STATES = [
         id: "escape",
         name: "LUNA",
         title: "ESCAPE",
-        subtitle: "The Exit Velocity",
-        quote: "Move first. Think later.",
-        desc: "LUNA is not energetic by personality.\nShe is motion, because staying was no longer possible.",
+        subtitle: "The Velocity",
+        quote: "When ESCAPE took over,\ndirection didn't matter.",
+        desc: "Result: Pure Velocity.\nAction without thought. Movement as the only form of survival.",
         bg: "bg-blue-950",
         accent: "text-blue-500",
         style: "saturate-200",
@@ -114,7 +114,7 @@ export default function LuminaForm() {
                             >
                                 <div>
                                     <h3 className="text-sm font-mono tracking-[0.2em] text-gray-500 mb-2">
-                                        SECTION 03 : FORM
+                                        STATE DOMINANCEResults
                                     </h3>
                                     <h2 className="text-6xl md:text-8xl font-bold text-white tracking-tighter mb-4">
                                         {STATES[activeState].name}
@@ -134,10 +134,27 @@ export default function LuminaForm() {
                                     {STATES[activeState].desc}
                                 </p>
 
-                                <div className="pt-8">
-                                    <span className="text-xs font-mono text-gray-600 border border-gray-800 px-2 py-1 rounded">
-                                        STATE ID: {STATES[activeState].id.toUpperCase()}
-                                    </span>
+                                <div className="pt-8 border-t border-white/10 mt-8">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">
+                                            OUTPUT EVIDENCE
+                                        </span>
+                                        <span className="text-xs font-mono text-gray-600 border border-gray-800 px-2 py-1 rounded">
+                                            ID: {STATES[activeState].id.toUpperCase()}
+                                        </span>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-2">
+                                        {/* Mock Evidence Slots */}
+                                        <div className="aspect-square bg-white/5 rounded-sm border border-white/5 flex items-center justify-center">
+                                            <span className="text-[10px] text-gray-600 font-mono">FIG_A</span>
+                                        </div>
+                                        <div className="aspect-square bg-white/5 rounded-sm border border-white/5 flex items-center justify-center">
+                                            <span className="text-[10px] text-gray-600 font-mono">FIG_B</span>
+                                        </div>
+                                        <div className="aspect-square bg-white/5 rounded-sm border border-white/5 flex items-center justify-center">
+                                            <span className="text-[10px] text-gray-600 font-mono">DATA_C</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </motion.div>
                         </AnimatePresence>

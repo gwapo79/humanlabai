@@ -10,50 +10,43 @@ export default function LuminaFoundation() {
         offset: ["start start", "end start"]
     });
 
-    const titleOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-    const questionOpacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
+    // Simplified: No complex scroll reveals for the header, just immediate impact.
+    // Keeping scrollYProgress if we need parallax later, but for now just static impactful entry.
 
     return (
-        <section ref={containerRef} className="h-[200vh] relative bg-black text-white">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="/images/lumina/hero-bg.jpg"
-                    alt="Lumina Background"
-                    className="w-full h-full object-cover opacity-60"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90" />
-            </div>
+        <section ref={containerRef} className="py-32 bg-zinc-950 text-white border-b border-white/10">
+            <div className="container mx-auto px-6 max-w-4xl text-center">
 
-            <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-                <div className="relative z-10 text-center mix-blend-difference px-4">
-                    {/* Initial Title */}
-                    <motion.div style={{ opacity: titleOpacity }} className="space-y-6">
-                        <div className="inline-block border border-white/20 px-3 py-1 text-xs font-mono text-gray-400 tracking-widest uppercase mb-4">
-                            Project ID: Lumina
-                        </div>
-                        <h1 className="text-6xl md:text-9xl font-bold tracking-tighter">
-                            LUMINA
-                        </h1>
-                        <p className="text-xl md:text-2xl text-gray-300 max-w-lg mx-auto font-light">
-                            Psychological IP Architecture
+                <motion.div
+                    style={{ opacity: scrollYProgress }}
+                    className="space-y-12"
+                >
+                    <span className="text-xs font-mono text-red-500 tracking-widest border border-red-900 bg-red-900/10 px-3 py-1 rounded">
+                        DEPARTURE CONDITION
+                    </span>
+
+                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight">
+                        LUMINA started from a <span className="text-gray-500">state</span>,<br />
+                        not a story.
+                    </h2>
+
+                    <div className="max-w-xl mx-auto space-y-6 text-lg md:text-xl text-gray-400 leading-relaxed">
+                        <p>
+                            Usually, characters are built from profiles: Age, Job, Hobby.
+                            <br />
+                            <span className="text-white">We were built from survival.</span>
                         </p>
-                    </motion.div>
+                        <p>
+                            When emotion becomes too dangerous for one person to handle,
+                            the self cannot hold its shape. It fractures.
+                        </p>
+                        <p className="text-white font-serif italic border-l-2 border-white/20 pl-6 ml-6 md:ml-0 text-left">
+                            "The split was not a choice. It was a biological necessity."
+                        </p>
+                    </div>
 
-                    {/* The Core Question (Revealed on Scroll) */}
-                    <motion.div
-                        style={{ opacity: questionOpacity }}
-                        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                    >
-                        <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight max-w-4xl mx-auto shadow-black drop-shadow-lg">
-                            "What happens<br />when one person can no longer stay whole?"
-                        </h2>
-                    </motion.div>
-                </div>
+                </motion.div>
             </div>
-
-            {/* Bottom Gradient for Transition */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20" />
         </section>
     );
 }

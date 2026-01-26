@@ -7,18 +7,18 @@ import { cn } from "@/lib/utils";
 const STEPS = [
     {
         num: "01",
-        label: "ONE PERSON UNDER PRESSURE",
-        text: "The mind can no longer sustain the weight of a single identity.\nCracks begin to form in the ego."
+        label: "STEP 01: PRESSURE",
+        text: "The external reality exceeded emotional capacity.\nSubject: Yoonseo (Human). Status: Critical."
     },
     {
         num: "02",
-        label: "FEELING BECOMES DANGEROUS",
-        text: "Emotions overflow. Control is lost.\nThe system triggers an emergency protocol."
+        label: "STEP 02: THRESHOLD",
+        text: "The self could no longer maintain a single state.\nWarning: Total system collapse imminent."
     },
     {
         num: "03",
-        label: "THE MIND STOPS BEHAVING AS ONE",
-        text: "To survive, the self fractures.\nThree distinct states emerge to handle the load."
+        label: "STEP 03: SPLIT",
+        text: "The system fractured into three distinct survival mechanisms.\nControl (Sia), Sensitivity (Hayeon), Escape (Luna)."
     }
 ];
 
@@ -77,14 +77,13 @@ export default function LuminaConstruction() {
                     {/* Left: Section Marker */}
                     <div className="hidden md:flex flex-col justify-between h-[60vh] border-l border-white/10 pl-8">
                         <div>
-                            <span className="text-xs font-mono text-gray-500 tracking-widest">SECTION 02</span>
-                            <h2 className="text-4xl font-bold mt-2 tracking-tight">CONSTRUCTION</h2>
+                            <span className="text-xs font-mono text-gray-500 tracking-widest">SYSTEM LOGIC</span>
+                            <h2 className="text-4xl font-bold mt-2 tracking-tight">CONSTRUCTION PROCESS</h2>
                         </div>
                         <div className="mb-12">
                             <p className="text-gray-400 font-serif italic text-xl">
-                                "From this foundation,<br />
-                                the characters were not invented.<br />
-                                <span className="text-white">They emerged.</span>"
+                                "The partition was not accidental.<br />
+                                It was <span className="text-white">architected for survival.</span>"
                             </p>
                         </div>
                     </div>

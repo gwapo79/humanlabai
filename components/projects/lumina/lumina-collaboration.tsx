@@ -10,33 +10,42 @@ export default function LuminaCollaboration() {
                 {/* Header */}
                 <div className="mb-24">
                     <span className="text-xs font-mono text-gray-500 tracking-widest uppercase block mb-4">
-                        Section 06 : Collaboration
+                        SECTION 07 : APPLIED CASES
                     </span>
                     <h2 className="text-5xl md:text-7xl font-bold tracking-tighter max-w-4xl">
-                        Brands don’t collaborate with faces.<br />
-                        They collaborate with <span className="text-purple-600">emotional systems.</span>
+                        The System <span className="text-purple-600">integrates</span><br />
+                        external functions.
                     </h2>
+                </div>
+
+                {/* Process Flow */}
+                <div className="flex items-center gap-4 mb-12 text-xs font-mono text-gray-400 uppercase tracking-widest">
+                    <span>Brief</span>
+                    <span className="text-gray-300">→</span>
+                    <span>State Analysis</span>
+                    <span className="text-gray-300">→</span>
+                    <span className="text-black font-bold">Output</span>
                 </div>
 
                 {/* Connection Matrix */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <CollaborationCard
-                        title="FASHION"
+                        title="CASE 01: FASHION"
                         target="CONTROL / SIA"
-                        desc="Structured, minimal, defensive armor."
-                        brands={["Luxury", "Tailoring", "Monochrome"]}
+                        desc="Structure as defense. Minimalist tailoring for emotional containment."
+                        brands={["Output: Armor Collection", "Function: Protection"]}
                     />
                     <CollaborationCard
-                        title="LIFESTYLE"
+                        title="CASE 02: LIFESTYLE"
                         target="SENSITIVITY / HAYEON"
-                        desc="Comfort, healing, soft textures."
-                        brands={["Wellness", "Home", "Scent"]}
+                        desc="Soft textures for grounding. Scent and touch as recovery mechanisms."
+                        brands={["Output: Recovery Kit", "Function: Healing"]}
                     />
                     <CollaborationCard
-                        title="TECH & SPORT"
+                        title="CASE 03: PERFORMANCE"
                         target="ESCAPE / LUNA"
-                        desc="Speed, performance, durability."
-                        brands={["Mobility", "Activewear", "Energy"]}
+                        desc="High-mobility gear. For when the flight response activates."
+                        brands={["Output: Velocity Gear", "Function: Motion"]}
                     />
                 </div>
 
@@ -47,13 +56,12 @@ export default function LuminaCollaboration() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <p className="text-xl md:text-3xl text-gray-500 font-light mb-6 font-serif italic">
-                            "This page should feel like observing a fractured mind,<br />
-                            not browsing characters."
+                        <p className="text-xl md:text-3xl text-gray-500 font-light mb-6 font-mono">
+                            {">"} New protocols available for integration.
                         </p>
 
-                        <div className="inline-block mt-8 px-6 py-3 bg-black text-white rounded-full text-sm font-bold tracking-widest">
-                            ENTER THE SYSTEM
+                        <div className="inline-block mt-8 px-6 py-3 bg-black text-white rounded-full text-sm font-bold tracking-widest cursor-pointer hover:bg-gray-900 transition-colors">
+                            INITIATE PARTNERSHIP
                         </div>
                     </motion.div>
                 </div>
@@ -69,7 +77,7 @@ function CollaborationCard({ title, target, desc, brands }: any) {
             <h3 className="text-sm font-bold text-gray-400 mb-8 tracking-widest">{title}</h3>
 
             <div className="mb-6">
-                <span className="text-xs text-purple-600 font-mono uppercase block mb-1">Connects to</span>
+                <span className="text-xs text-purple-600 font-mono uppercase block mb-1">TARGET SYSTEM</span>
                 <h4 className="text-2xl font-bold">{target}</h4>
             </div>
 
