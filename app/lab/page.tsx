@@ -1,22 +1,17 @@
-import { supabase } from '@/utils/supabase';
+import { LAB_NOTES } from '@/constants/labNotesData';
+import Link from 'next/link';
 
 const getStatusBadge = (status: string) => {
-    // DB에 저장된 텍스트와 정확히 일치해야 함 (대소문자 주의)
     const s = status ? status.toUpperCase() : 'BETA';
     if (s === 'PRODUCTION_READY') return <span className="bg-green-500/20 text-green-400 border border-green-500/50 px-2 py-1 rounded text-xs font-bold">PRODUCTION READY</span>;
     if (s === 'EXPERIMENTAL') return <span className="bg-purple-500/20 text-purple-400 border border-purple-500/50 px-2 py-1 rounded text-xs font-bold">EXPERIMENTAL</span>;
+    if (s === 'BETA_TESTING') return <span className="bg-yellow-500/20 text-yellow-400 border border-yellow-500/50 px-2 py-1 rounded text-xs font-bold">BETA TESTING</span>;
     return <span className="bg-gray-500/20 text-gray-400 border border-gray-500/50 px-2 py-1 rounded text-xs font-bold">{s}</span>;
 };
 
-export default async function LabPage() {
-    const { data: labs, error } = await supabase
-        .from('lab_notes')
-        .select('*');
-
-    if (error) {
-        console.error("Lab Fetch Error:", error);
-        return <div className="text-white">Lab Data Error: {error.message}</div>;
-    }
+export default function LabPage() {
+    // 상수 데이터 사용 (Supabase DB 대신)
+    const labs = LAB_NOTES;
 
     return (
         <main className="min-h-screen bg-black pt-24 px-6 pb-20">
@@ -29,13 +24,13 @@ export default async function LabPage() {
                 </header>
 
                 <div className="space-y-6">
-                    {labs?.map((note) => (
+                    {labs.map((note) => (
                         <div key={note.id} className="bg-gray-900/30 border border-gray-800 rounded-xl p-6 hover:border-humanlab-neon/50 transition-colors">
                             <div className="flex flex-wrap items-center gap-3 mb-4">
-                                {getStatusBadge(note.status || 'BETA')}
+                                {getStatusBadge(note.status)}
                                 <span className="text-humanlab-neon text-sm font-mono">[{note.category}]</span>
                                 <span className="text-gray-500 text-xs ml-auto">
-                                    {note.created_at ? note.created_at.split('T')[0] : ''}
+                                    {note.date}
                                 </span>
                             </div>
                             <h2 className="text-2xl font-bold text-white mb-3">{note.title}</h2>

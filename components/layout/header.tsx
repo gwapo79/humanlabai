@@ -31,8 +31,8 @@ export function Header() {
                     <Image
                         src="/images/Logo_humanlabAI.png"
                         alt="HumanLab AI Logo"
-                        width={180}
-                        height={50}
+                        width={188}
+                        height={51}
                         className="object-contain"
                         priority
                     />
