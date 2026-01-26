@@ -61,9 +61,9 @@ export default function LuminaConstruction() {
                     >
                         {/* Silhouette Image */}
                         <img
-                            src="/images/lumina/yoonseo_silhouette.png"
-                            alt="Yoonseo Silhouette"
-                            className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)] opacity-80"
+                            src="/images/lumina/lumina_construction_core.png"
+                            alt="Construction Core"
+                            className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)] opacity-90 mix-blend-screen"
                         />
 
                         {/* Inner Pulse Effect to keep some "energy" */}

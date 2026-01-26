@@ -52,9 +52,10 @@ export default function LuminaHero() {
                             <span className="text-xs font-mono font-bold tracking-widest text-blue-400">CONTROL / SIA</span>
                         </div>
                         <div className="aspect-video w-full bg-blue-900/20 mb-4 rounded-sm overflow-hidden relative">
-                            {/* Visual Proo f placeholder */}
-                            <div className="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors" />
-                            <div className="absolute bottom-2 left-2 text-[10px] font-mono text-blue-300">FIG 01. STRUCTURE</div>
+                            {/* Visual Proof */}
+                            <img src="/images/lumina/states/sia_v2.jpg" alt="Sia" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/0 transition-colors pointer-events-none" />
+                            <div className="absolute bottom-2 left-2 text-[10px] font-mono text-white/80 bg-black/50 px-1 rounded">FIG 01. STRUCTURE</div>
                         </div>
                         <p className="text-lg font-bold leading-tight mb-2">
                             "You must not feel."
@@ -76,9 +77,10 @@ export default function LuminaHero() {
                             <span className="text-xs font-mono font-bold tracking-widest text-pink-400">SENSITIVITY / HAYEON</span>
                         </div>
                         <div className="aspect-video w-full bg-pink-900/20 mb-4 rounded-sm overflow-hidden relative">
-                            {/* Visual Proof placeholder */}
-                            <div className="absolute inset-0 bg-pink-500/10 group-hover:bg-pink-500/20 transition-colors" />
-                            <div className="absolute bottom-2 left-2 text-[10px] font-mono text-pink-300">FIG 02. WAVEFORM</div>
+                            {/* Visual Proof */}
+                            <img src="/images/lumina/states/hayeon_v2.jpg" alt="Hayeon" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute inset-0 bg-pink-500/10 group-hover:bg-pink-500/0 transition-colors pointer-events-none" />
+                            <div className="absolute bottom-2 left-2 text-[10px] font-mono text-white/80 bg-black/50 px-1 rounded">FIG 02. WAVEFORM</div>
                         </div>
                         <p className="text-lg font-bold leading-tight mb-2">
                             "I cannot hide it."
@@ -100,9 +102,10 @@ export default function LuminaHero() {
                             <span className="text-xs font-mono font-bold tracking-widest text-yellow-400">ESCAPE / LUNA</span>
                         </div>
                         <div className="aspect-video w-full bg-yellow-900/20 mb-4 rounded-sm overflow-hidden relative">
-                            {/* Visual Proof placeholder */}
-                            <div className="absolute inset-0 bg-yellow-500/10 group-hover:bg-yellow-500/20 transition-colors" />
-                            <div className="absolute bottom-2 left-2 text-[10px] font-mono text-yellow-300">FIG 03. VELOCITY</div>
+                            {/* Visual Proof */}
+                            <img src="/images/lumina/states/luna_v2.jpg" alt="Luna" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute inset-0 bg-yellow-500/10 group-hover:bg-yellow-500/0 transition-colors pointer-events-none" />
+                            <div className="absolute bottom-2 left-2 text-[10px] font-mono text-white/80 bg-black/50 px-1 rounded">FIG 03. VELOCITY</div>
                         </div>
                         <p className="text-lg font-bold leading-tight mb-2">
                             "Just move anywhere."
