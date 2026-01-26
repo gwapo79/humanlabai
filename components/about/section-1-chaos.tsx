@@ -7,8 +7,6 @@ export function Section1Chaos() {
     return (
         <section className="min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden relative">
 
-            {/* Background Texture with Glitch/Shake */}
-            {/* Background Texture with Glitch/Shake */}
             {/* Background Image: Hyper-Realistic Office Chaos */}
             <motion.div
                 className="absolute inset-0 z-0"
@@ -35,16 +33,27 @@ export function Section1Chaos() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-4xl"
+                    className="max-w-5xl"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight leading-tight">
-                        시작과 끝은 '사람'이,<br />
-                        그 사이의 속도는 'AI'가 채웁니다.
+                    {/* 메인 제목: 묵직하고 신뢰감 있는 타이포그래피 */}
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-10 tracking-tighter leading-tight">
+                        결정적 기획은 <span className="text-humanlab-neon">'사람'</span>이 하고,<br />
+                        압도적 속도는 <span className="text-humanlab-neon">'AI'</span>가 만듭니다.
                     </h2>
-                    <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light break-keep">
-                        AI 툴 구독료와 프롬프트 학습에 시간을 낭비하지 마세요.<br className="hidden md:block" />
-                        HumanLab AI는 기업에 딱 맞는 <strong className="font-bold text-humanlab-neon">'기획(Kick)'</strong>과 검증된 <strong className="font-bold text-humanlab-neon">'퀄리티'</strong>만 남기고,<br className="hidden md:block" />
-                        복잡하고 비싼 제작 과정은 AI로 압축하여 가장 합리적인 결과를 드립니다.
+
+                    {/* 본문: 강조 포인트 시각화 */}
+                    <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light break-keep max-w-4xl mx-auto">
+                        세상의 모든 AI 도구를 써봐도 결국 중요한 건{" "}
+                        <strong className="font-semibold text-white">'누가 지휘하느냐'</strong>입니다.
+                        <br className="hidden md:block" />
+                        HumanLab AI는 전문가의 날카로운 기획에 AI의 폭발적인 생산력을 결합했습니다.
+                        <br className="hidden lg:block" />
+                        <span className="block mt-4 text-humanlab-neon font-semibold text-2xl md:text-3xl">
+                            시행착오는 0으로, 결과물은 전문가 급으로.
+                        </span>
+                        <span className="block mt-2 text-white font-medium">
+                            비즈니스의 속도를 바꾸십시오.
+                        </span>
                     </p>
                 </motion.div>
             </div>
