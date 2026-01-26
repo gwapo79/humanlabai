@@ -1,25 +1,50 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Lock } from "lucide-react";
+import { Lock, Mail, AlertCircle } from "lucide-react";
 
-export default function AdminLogin() {
-    const [password, setPassword] = useState("");
+function LoginForm() {
+    const [email, setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const error = searchParams.get('error');
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Simple Mock Auth: Check against a hardcoded "secret" for MVP
-        if (password === "humanlab1234") {
-            // Set a mock cookie or local storage
-            localStorage.setItem("admin_auth", "true");
-            router.push("/admin");
-        } else {
-            alert("비밀번호가 일치하지 않습니다.");
+        setIsLoading(true);
+        setMessage(null);
+
+        const supabase = createClient();
+
+        // CEO 지침: bizgguya@gmail.com 외 차단 (클라이언트 사전 검증)
+        const WHITELIST = ['bizgguya@gmail.com'];
+        if (!WHITELIST.includes(email.toLowerCase().trim())) {
+            setMessage({ type: 'error', text: '접근 권한이 없는 이메일입니다.' });
+            setIsLoading(false);
+            return;
         }
+
+        // Magic Link 전송
+        const { error } = await supabase.auth.signInWithOtp({
+            email: email,
+            options: {
+                emailRedirectTo: `${window.location.origin}/admin`,
+            },
+        });
+
+        if (error) {
+            setMessage({ type: 'error', text: error.message });
+        } else {
+            setMessage({ type: 'success', text: '인증 링크가 이메일로 전송되었습니다. 메일함을 확인하세요.' });
+        }
+
+        setIsLoading(false);
     };
 
     return (
@@ -31,21 +56,65 @@ export default function AdminLogin() {
                     <p className="text-gray-400 text-sm">Authorized Personnel Only</p>
                 </div>
 
+                {/* 에러 메시지 (URL 파라미터) */}
+                {error === 'unauthorized' && (
+                    <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>접근 권한이 없습니다. 승인된 계정으로 로그인하세요.</span>
+                    </div>
+                )}
+
+                {/* 메시지 표시 */}
+                {message && (
+                    <div className={`flex items-center gap-2 p-3 rounded-lg text-sm ${message.type === 'success'
+                            ? 'bg-green-500/10 border border-green-500/30 text-green-400'
+                            : 'bg-red-500/10 border border-red-500/30 text-red-400'
+                        }`}>
+                        {message.type === 'error' && <AlertCircle className="w-4 h-4 flex-shrink-0" />}
+                        <span>{message.text}</span>
+                    </div>
+                )}
+
                 <form onSubmit={handleLogin} className="space-y-4">
                     <div className="space-y-2">
-                        <Input
-                            type="password"
-                            placeholder="Enter Access Key"
-                            className="bg-black border-white/10 text-center tracking-widest"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div className="relative">
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                            <Input
+                                type="email"
+                                placeholder="Enter Admin Email"
+                                className="bg-black border-white/10 pl-10"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                disabled={isLoading}
+                            />
+                        </div>
                     </div>
-                    <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200 font-bold">
-                        Access Dashboard
+                    <Button
+                        type="submit"
+                        className="w-full bg-white text-black hover:bg-gray-200 font-bold"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Sending...' : 'Send Magic Link'}
                     </Button>
                 </form>
+
+                <p className="text-center text-gray-500 text-xs">
+                    승인된 이메일로만 로그인이 가능합니다.
+                </p>
             </div>
         </div>
+    );
+}
+
+export default function AdminLogin() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-black flex items-center justify-center">
+                <div className="animate-pulse text-gray-500">Loading...</div>
+            </div>
+        }>
+            <LoginForm />
+        </Suspense>
     );
 }
