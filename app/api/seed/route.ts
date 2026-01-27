@@ -34,7 +34,6 @@ export async function GET() {
             description: project.desc,
             type: project.type,
             image_url: project.image,
-            grid_area: project.gridArea
         }));
 
         const { error: projectError } = await supabase
