@@ -127,8 +127,30 @@ export default function LuminaExpression() {
                     <div>
                         <h3 className="text-xl font-bold text-white mb-6 border-l-2 border-white/20 pl-4">02. MUSIC</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <ArchiveCard type="Audio" title="Main Theme" label="AUDIO_01" duration="03:45" />
-                            <ArchiveCard type="Audio" title="Sia's Theme" label="AUDIO_02" duration="02:20" />
+                            <ArchiveCard
+                                type="Audio"
+                                title="Hayeon's Mix"
+                                label="AUDIO_HYN"
+                                duration="03:45"
+                                coverImage="/images/lumina/music/hayeon_music.jpg"
+                                portrait
+                            />
+                            <ArchiveCard
+                                type="Audio"
+                                title="Luna's Beat"
+                                label="AUDIO_LNA"
+                                duration="02:20"
+                                coverImage="/images/lumina/music/luna_music.jpg"
+                                portrait
+                            />
+                            <ArchiveCard
+                                type="Audio"
+                                title="Sia's Vibe"
+                                label="AUDIO_SHA"
+                                duration="03:10"
+                                coverImage="/images/lumina/music/sia_music.jpg"
+                                portrait
+                            />
                         </div>
                     </div>
 

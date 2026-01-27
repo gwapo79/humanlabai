@@ -164,6 +164,7 @@ h4,
 h5,
 h6 {
   font-family: "Paperlogy", "PretendardGOV", sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .dark {
@@ -213,4 +214,5 @@ h6 {
 /* Tailwind utility for heading font */
 .font-heading {
   font-family: "Paperlogy", "PretendardGOV", sans-serif;
+  letter-spacing: 0.02em;
 }

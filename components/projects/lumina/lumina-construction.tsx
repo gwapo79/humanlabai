@@ -57,17 +57,19 @@ export default function LuminaConstruction() {
                 >
                     <motion.div
                         style={{ scale: silhouetteScale, opacity: silhouetteOpacity }}
-                        className="relative w-[300px] h-[500px] md:w-[400px] md:h-[600px] flex items-center justify-center"
+                        className="relative w-[600px] h-[1000px] md:w-[800px] md:h-[1200px] flex items-center justify-center"
                     >
                         {/* Silhouette Image */}
                         <img
-                            src="/images/lumina/lumina_construction_core.png"
+                            src="/images/lumina/lumina_construction_process_v2.jpg"
                             alt="Construction Core"
-                            className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)] opacity-90 mix-blend-screen"
+                            style={{
+                                maskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
+                                WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)'
+                            }}
+                            className="w-full h-full object-contain opacity-90 mix-blend-screen"
                         />
 
-                        {/* Inner Pulse Effect to keep some "energy" */}
-                        <div className="absolute inset-0 bg-white/5 blur-3xl animate-pulse rounded-full" />
                     </motion.div>
                 </motion.div>
 

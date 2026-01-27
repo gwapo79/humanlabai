@@ -30,45 +30,8 @@ export default function LuminaCoreLogic() {
                     </p>
                 </motion.div>
 
-                <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 text-left border-t border-white/10 pt-12">
-
-                    <div>
-                        <h3 className="text-xs font-mono text-gray-500 mb-6 uppercase tracking-widest">
-                            System Directories
-                        </h3>
-                        <div className="flex flex-col gap-2">
-                            <Link href="/" className="text-gray-400 hover:text-white transition-colors font-mono text-sm">
-                                [00] ROOT / HOME
-                            </Link>
-                            <Link href="/projects" className="text-gray-400 hover:text-white transition-colors font-mono text-sm">
-                                [01] INDEX / WORK
-                            </Link>
-                            <Link href="/contact" className="text-gray-400 hover:text-white transition-colors font-mono text-sm">
-                                [02] COMMS / CONTACT
-                            </Link>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 className="text-xs font-mono text-gray-500 mb-6 uppercase tracking-widest">
-                            Legal Protocols
-                        </h3>
-                        <div className="flex flex-col gap-2">
-                            <span className="text-gray-600 font-mono text-sm cursor-not-allowed">Terms of Simulation</span>
-                            <span className="text-gray-600 font-mono text-sm cursor-not-allowed">Privacy Log</span>
-                        </div>
-                    </div>
-
-                    <div className="md:text-right">
-                        <h3 className="text-xs font-mono text-gray-500 mb-6 uppercase tracking-widest">
-                            System Stamp
-                        </h3>
-                        <p className="text-gray-600 font-mono text-xs">
-                            © 2024 HUMANLAB AI.<br />
-                            LUMINA VER 3.0
-                        </p>
-                    </div>
-
+                <div className="mt-24 border-t border-white/10 pt-12">
+                    {/* Footer content removed as per request */}
                 </div>
 
             </div>

@@ -20,7 +20,7 @@ export function ProjectCardGallery({ project, index }: ProjectCardGalleryProps) 
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
             }}
-            className={`relative group rounded-3xl overflow-hidden border border-white/10 bg-card ${project.gridArea}`}
+            className={`relative group rounded-3xl overflow-hidden border border-white/10 bg-card aspect-[3/4]`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

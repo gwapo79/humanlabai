@@ -58,7 +58,7 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[350px]"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {initialProjects.map((project, index) => (
                         <ProjectCardGallery
