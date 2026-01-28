@@ -20,7 +20,7 @@ export default function LuminaCoreLogic() {
                         </span>
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter">
                         PROCESS TERMINATED.
                     </h2>
 

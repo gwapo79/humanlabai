@@ -7,10 +7,10 @@ export default function LuminaLivingSystem() {
     return (
         <section className="py-32 bg-zinc-900 text-white">
             <div className="container mx-auto px-4 max-w-5xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div className="flex flex-col md:grid md:grid-cols-2 gap-16 items-start">
 
                     {/* Concept Text */}
-                    <div className="space-y-8 sticky top-32">
+                    <div className="space-y-8 relative md:sticky top-0 md:top-32">
                         <span className="text-xs font-mono text-gray-500 tracking-widest uppercase">
                             SECTION 06 : SYSTEM LOGS
                         </span>

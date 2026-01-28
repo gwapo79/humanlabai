@@ -51,7 +51,7 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-tight"
+                    className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tighter text-white leading-tight"
                 >
                     WE MAKE ADS <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-600">
@@ -64,7 +64,7 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto font-light"
+                    className="text-base sm:text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto font-light"
                 >
                     HumanLab AI는 캐릭터와 브랜드를 살아있는 자산으로 운영합니다.<br className="hidden md:block" />
                     우리는 '단발성 캠페인'이 아닌 '지속적인 운영'을 만듭니다.
@@ -75,18 +75,18 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row gap-6 pt-6"
+                    className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 sm:pt-6 w-full sm:w-auto px-6 sm:px-0"
                 >
-                    <Link href="/live">
-                        <Button size="lg" className="h-14 px-8 text-lg bg-white text-black hover:bg-gray-200 rounded-full font-bold transition-transform hover:scale-105">
+                    <Link href="/live" className="w-full sm:w-auto">
+                        <Button size="lg" className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg bg-white text-black hover:bg-gray-200 rounded-full font-bold transition-transform hover:scale-105">
                             실시간 활동 보기 (LIVE)
-                            <Activity className="ml-2 w-5 h-5" />
+                            <Activity className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                         </Button>
                     </Link>
-                    <Link href="/contact">
-                        <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-white/20 text-white hover:bg-white/10 rounded-full hover:border-white transition-all">
+                    <Link href="/contact" className="w-full sm:w-auto">
+                        <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg border-white/20 text-white hover:bg-white/10 rounded-full hover:border-white transition-all">
                             운영 문의하기
-                            <ArrowRight className="ml-2 w-5 h-5" />
+                            <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                         </Button>
                     </Link>
                 </motion.div>

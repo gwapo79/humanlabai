@@ -4,42 +4,37 @@ import { motion } from "framer-motion";
 
 export default function LuminaHero() {
     return (
-        <section className="min-h-screen relative flex flex-col justify-end pb-24 bg-black text-white px-6 md:px-12 overflow-hidden">
+        <section className="min-h-[100svh] relative flex flex-col justify-end pb-24 bg-black text-white px-6 md:px-12 overflow-hidden">
             {/* Background Visual (Representative Proof) */}
             <div className="absolute inset-0 z-0">
-                <img
-                    src="/images/lumina/hero-bg.jpg" // Placeholder for representative visual
-                    alt="Lumina Composite State"
-                    className="w-full h-full object-cover opacity-50"
-                />
+                <picture>
+                    <source media="(max-width: 768px)" srcSet="/images/lumina/hero-bg-mobile.jpg" />
+                    <img
+                        src="/images/lumina/hero-bg.jpg" // Placeholder for representative visual
+                        alt="Lumina Composite State"
+                        className="w-full h-full object-cover object-top opacity-50 md:scale-100"
+                    />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto w-full">
                 {/* Status Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                    className="absolute top-0 right-0 mt-8 md:mt-0 flex items-center gap-3 backdrop-blur-md bg-white/5 border border-white/10 px-4 py-2 rounded-full"
-                >
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-xs font-mono font-bold tracking-widest text-green-400">SYSTEM ACTIVE : PHASE 4</span>
-                </motion.div>
+
 
                 {/* Headline: "We are three but actually one" */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-12 mix-blend-difference"
+                    className="absolute top-[40svh] left-0 right-0 -translate-y-1/2 z-20 px-6 text-center md:relative md:top-auto md:translate-y-0 md:text-left text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-8 md:mb-12 mix-blend-difference"
                 >
                     WE ARE THREE,<br />
                     <span className="text-gray-500">BUT ACTUALLY ONE.</span>
                 </motion.h1>
 
                 {/* 3 State Summary (Direct Evidence) */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 border-t border-white/20 pt-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-[70vh] md:mt-12 border-t border-white/20 pt-8">
                     {/* State 01 */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

@@ -16,7 +16,7 @@ export function Footer() {
                     </div>
 
                     <div className="space-y-4">
-                        <h4 className="text-white font-semibold">EXPLORE</h4>
+                        <h4 className="text-white font-bold text-sm">EXPLORE</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
                             <li><Link href="/live" className="hover:text-white transition-colors">LIVE Activity</Link></li>
                             <li><Link href="/projects" className="hover:text-white transition-colors">Our Projects</Link></li>
@@ -25,7 +25,7 @@ export function Footer() {
                     </div>
 
                     <div className="space-y-4">
-                        <h4 className="text-white font-semibold">COMPANY</h4>
+                        <h4 className="text-white font-bold text-sm">COMPANY</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
                             <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
                             <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
@@ -34,7 +34,7 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                     <p>© 2026 HumanLab AI. All logic & emotions reserved.</p>
                     <div className="flex gap-4 mt-4 md:mt-0">
                         <Link href="#" className="hover:text-white">개인정보 처리방침</Link>

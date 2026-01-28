@@ -69,18 +69,7 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
                     ))}
                 </motion.div>
 
-                {/* Bottom Footer Info */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="mt-32 text-center"
-                >
-                    <p className="text-gray-600 font-mono text-sm">
-                        HUMANLAB AI &copy; 2026. ALL RIGHTS RESERVED.<br />
-                        DESIGNED FOR THE FUTURE.
-                    </p>
-                </motion.div>
+                {/* Bottom Footer Info Removed */}
             </div>
         </div>
     );

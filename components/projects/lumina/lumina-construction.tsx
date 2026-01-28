@@ -38,12 +38,12 @@ export default function LuminaConstruction() {
 
     // Silhouette Effect: Gets more "fractured" as we scroll?
     // For now, let's keep the core "Empty Center" visual but make it pulse/change
-    const silhouetteScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 0.8]);
+    const silhouetteScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.5, 1.8, 1.2]);
     const silhouetteOpacity = useTransform(scrollYProgress, [0, 0.8, 1], [0.3, 0.6, 0]);
 
     return (
         <section ref={containerRef} className="h-[300vh] relative bg-black text-white">
-            <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
+            <div className="sticky top-0 h-[100svh] overflow-hidden flex items-center justify-center">
 
                 {/* Background Atmosphere */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/10 to-black z-0" />
@@ -57,7 +57,7 @@ export default function LuminaConstruction() {
                 >
                     <motion.div
                         style={{ scale: silhouetteScale, opacity: silhouetteOpacity }}
-                        className="relative w-[600px] h-[1000px] md:w-[800px] md:h-[1200px] flex items-center justify-center"
+                        className="relative w-full h-[60svh] md:w-[800px] md:h-[1200px] flex items-center justify-center"
                     >
                         {/* Silhouette Image */}
                         <img
@@ -91,7 +91,7 @@ export default function LuminaConstruction() {
                     </div>
 
                     {/* Right: Step Narrative */}
-                    <div className="space-y-32 md:space-y-0">
+                    <div className="relative w-full h-full pointer-events-none md:pointer-events-auto">
                         {STEPS.map((step, i) => (
                             <StepCard
                                 key={i}
@@ -128,7 +128,7 @@ function StepCard({ step, index, scrollYProgress }: { step: any, index: number, 
     return (
         <motion.div
             style={{ opacity, y }}
-            className="md:absolute md:top-1/2 md:right-0 md:-translate-y-1/2 w-full max-w-md p-8 bg-zinc-900/50 backdrop-blur border border-white/10 rounded-sm"
+            className="absolute top-1/2 left-4 right-4 md:left-0 md:right-0 -translate-y-1/2 mx-auto md:mx-0 md:w-full max-w-md p-6 md:p-8 bg-zinc-900/80 backdrop-blur-md border border-white/10 rounded-sm pointer-events-auto"
         >
             <div className="flex items-center gap-4 mb-6">
                 <span className="text-xs font-mono border border-white/30 px-2 py-1 rounded-full">{step.num}</span>

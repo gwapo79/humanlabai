@@ -81,14 +81,14 @@ export function Header() {
                         exit={{ opacity: 0, height: 0 }}
                         className="md:hidden border-b border-white/10 bg-black"
                     >
-                        <nav className="flex flex-col p-4 space-y-4">
+                        <nav className="flex flex-col p-6 space-y-6">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.href}
                                     href={item.href}
                                     onClick={() => setIsOpen(false)}
                                     className={cn(
-                                        "text-lg font-medium transition-colors hover:text-white block",
+                                        "text-xl font-medium transition-colors hover:text-white block tracking-tight",
                                         pathname === item.href ? "text-white" : "text-gray-400"
                                     )}
                                 >
@@ -96,7 +96,7 @@ export function Header() {
                                 </Link>
                             ))}
                             <Link href="/contact" onClick={() => setIsOpen(false)}>
-                                <Button className="w-full mt-4" variant="premium">
+                                <Button className="w-full mt-2 h-12 text-base" variant="premium">
                                     CONTACT
                                 </Button>
                             </Link>

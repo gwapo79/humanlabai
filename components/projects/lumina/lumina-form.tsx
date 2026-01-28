@@ -143,7 +143,7 @@ export default function LuminaForm() {
 
     return (
         <section ref={containerRef} className="h-[400vh] relative bg-black">
-            <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
+            <div className="sticky top-[64px] h-[calc(100svh-64px)] overflow-hidden flex items-center justify-center pt-0 md:pt-0">
 
                 {/* Dynamic Background */}
                 <motion.div
@@ -153,10 +153,10 @@ export default function LuminaForm() {
                     )}
                 />
 
-                <div className="relative z-10 w-full max-w-7xl px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="relative z-10 w-full max-w-7xl px-4 md:grid md:grid-cols-2 md:gap-12 items-center flex flex-col justify-center h-full md:h-auto">
 
-                    {/* Visual Side */}
-                    <div className="h-[50vh] md:h-[80vh] w-full relative flex items-center justify-center">
+                    {/* Mobile 9:16 Container / Desktop Visual Side */}
+                    <div className="relative w-full aspect-[9/16] md:aspect-auto md:h-[80vh] flex items-center justify-center overflow-hidden rounded-sm border border-white/10 bg-zinc-900">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeState + (hoveredImage || "")}
@@ -165,24 +165,69 @@ export default function LuminaForm() {
                                 exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
                                 transition={{ duration: 0.8, ease: "easeInOut" }}
                                 className={cn(
-                                    "relative w-full h-full overflow-hidden rounded-sm border border-white/10",
+                                    "absolute inset-0 w-full h-full",
                                     hoveredImage ? "" : STATES[activeState].style
                                 )}
                             >
                                 <img
                                     src={hoveredImage || STATES[activeState].image}
                                     alt={STATES[activeState].name}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover object-top"
                                 />
 
-                                {/* Overlay for "Reaction" feel */}
+                                {/* Overlay for "Reaction" feel - maintained */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                             </motion.div>
                         </AnimatePresence>
+
+                        {/* Mobile Text Overlay (Inside Image Container for Mobile) */}
+                        <div className="absolute bottom-0 left-0 right-0 z-20 p-8 pb-12 bg-gradient-to-t from-black via-black/80 to-transparent md:hidden text-left">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeState}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="space-y-4"
+                                >
+                                    <div>
+                                        <h3 className="text-xs font-mono tracking-[0.2em] text-gray-400 mb-1">
+                                            STATE: {STATES[activeState].name}
+                                        </h3>
+                                        <h2 className="text-4xl font-bold text-white tracking-tighter mb-2">
+                                            {STATES[activeState].title}
+                                        </h2>
+                                        <div className="h-px w-8 bg-white/40 mb-4" />
+                                        <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">
+                                            "{STATES[activeState].quote}"
+                                        </p>
+                                    </div>
+
+                                    {/* Mobile Evidence Mini-Grid */}
+                                    <div className="pt-2">
+                                        <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest block mb-2">
+                                            EVIDENCE_LOG
+                                        </span>
+                                        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                                            {STATES[activeState].evidence?.slice(0, 4).map((img, idx) => (
+                                                <div
+                                                    key={idx}
+                                                    className="w-12 h-16 shrink-0 rounded-sm overflow-hidden border border-white/20"
+                                                    onClick={(e) => { e.stopPropagation(); openGallery(idx); }}
+                                                >
+                                                    <img src={img} className="w-full h-full object-cover" />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
                     </div>
 
-                    {/* Text Side */}
-                    <div className="space-y-12">
+                    {/* Desktop Text Side (Hidden on Mobile) */}
+                    <div className="space-y-12 hidden md:block">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeState}

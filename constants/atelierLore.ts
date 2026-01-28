@@ -37,7 +37,7 @@ export const ATELIER_LORE = {
             quote: "놀아줘! 지금 당장! (와장창)",
             description: "긍정 에너지 폭발하는 말티푸. 빨간 반다나를 하고 화상 회의 때마다 짖어서 방해하지만, 집사가 우울해 보이면 제일 먼저 다가와 위로하는 사랑스러운 껌딱지 강아지.",
             relationship: "화상 회의 방해 및 원단 훼손 / 집사 위로 담당",
-            imagePath: "/images/atelier26/leo.webp",
+            imagePath: "/images/atelier26/leo.png",
             color: "from-amber-600 via-orange-500 to-yellow-400",
             textColor: "text-amber-100"
         },
@@ -49,9 +49,9 @@ export const ATELIER_LORE = {
             visualKey: "Black Choker & Silver Tag",
             essence: "작업 책상 점령자. 뜻밖의 디자인 영감을 주는 뮤즈.",
             quote: "이 색깔이 더 낫네. (키보드 꾹)",
-            description: "짧은 다리의 먼치킨 고양이지만 집 안의 진정한 지배자. 블랙 초커를 하고 있으며, 집사들이 일할 때 키보드 위를 밟고 지나가 오타를 내지만 가끔 그 오타가 기가 막힌 아이디어가 된다.",
+            description: "짧은 다리의 먼치킨 고양이지만 집 안의 진정한 지배자. 블랙 초커를 하고 있으며, 집사들은 일할 때 키보드 위를 밟고 지나가 오타를 내지만 가끔 그 오타가 기가 막힌 아이디어가 된다.",
             relationship: "작업 책상 점령 및 키보드 오타 작업 / 뜻밖의 색조합 완성",
-            imagePath: "/images/atelier26/luna.webp",
+            imagePath: "/images/atelier26/roco.png",
             color: "from-slate-800 via-slate-900 to-black",
             textColor: "text-slate-200"
         },
@@ -65,7 +65,7 @@ export const ATELIER_LORE = {
             quote: "진! 밥 먹어! 아니 그거 말고!",
             description: "노란 깃이 매력적인 왕관앵무. 집사들의 말버릇은 물론, 부부싸움 멘트까지 정확히 복사해 손님 앞에서 재연하는 앵무새. 분위기를 싸하게 만드는 재주가 있다.",
             relationship: "집사들의 부부싸움 멘트 복사 및 손님 앞 재연",
-            imagePath: "/images/atelier26/reko.webp",
+            imagePath: "/images/atelier26/sparky.png",
             color: "from-yellow-300 via-yellow-500 to-orange-500",
             textColor: "text-yellow-100"
         },
@@ -79,7 +79,7 @@ export const ATELIER_LORE = {
             quote: "(조용히 태블릿 잠금해제)",
             description: "레오파드 게코 도마뱀. 작은 발바닥으로 태블릿 터치와 스마트 조명을 조작한다. 집사들은 기계 오작동인 줄 알지만 사실 스파키의 은밀한 도움이다.",
             relationship: "태블릿 및 조명 조작 / 폴터가이스트급 기술 지원",
-            imagePath: "/images/atelier26/sparky.webp",
+            imagePath: "/images/atelier26/chip.png",
             color: "from-lime-400 via-lime-600 to-green-800",
             textColor: "text-lime-100"
         },
@@ -93,7 +93,7 @@ export const ATELIER_LORE = {
             quote: "이 에어팟은 좋은 침대가 되겠어.",
             description: "작지만 재빠른 정글리안 햄스터. 가죽 백팩을 메고 다니며 에어팟 한 쪽, 연필깎이 등 작은 소품들을 은신처로 가져간다. 덕분에 집사들은 강제로 대청소를 하게 된다.",
             relationship: "에어팟, 연필깎이 등 소품 은신처 은닉 / 대청소 유발자",
-            imagePath: "/images/atelier26/chip.webp",
+            imagePath: "/images/atelier26/luna.png",
             color: "from-amber-800 via-brown-600 to-amber-950",
             textColor: "text-amber-200"
         }

@@ -89,7 +89,7 @@ export function LiveFeed() {
                                 </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
                                 {item.title}
                             </h3>
                             <p className="text-gray-400 leading-relaxed">
