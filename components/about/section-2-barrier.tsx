@@ -114,15 +114,24 @@ export function Section2Barrier() {
                     transition={{ duration: 0.8 }}
                     className="max-w-4xl bg-black/40 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-2xl"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold font-heading text-red-500 mb-8 drop-shadow-2xl leading-tight">
+                    <h2 className="text-3xl md:text-6xl font-bold font-heading text-red-500 mb-8 drop-shadow-2xl leading-tight">
                         AI 도입, '도구'가 아니라<br /> '전문가'가 필요합니다
                     </h2>
 
-                    <p className="text-xl md:text-2xl text-gray-100 leading-relaxed font-light break-keep">
-                        매달 쌓이는 구독료, 끝없는 프롬프트 학습, 불안정한 퀄리티.<br />
-                        단순히 툴을 구독하는 것만으로는 문제를 해결할 수 없습니다.<br className="hidden md:block" />
-                        <span className="text-white font-bold mt-4 block text-2xl md:text-3xl">복잡한 기술 학습 비용과 시행착오, HumanLab AI가 0으로 만들어 드립니다.</span>
-                    </p>
+                    <div className="text-base md:text-2xl text-gray-100 leading-relaxed font-light break-keep">
+                        {/* Mobile Text */}
+                        <span className="md:hidden">
+                            구독료 부담, 끝없는 학습, 불안정한 결과물.<br />
+                            단순한 '툴 구독'으론 해결되지 않습니다.
+                        </span>
+                        {/* Desktop Text */}
+                        <span className="hidden md:inline">
+                            매달 쌓이는 구독료, 끝없는 프롬프트 학습, 불안정한 퀄리티.<br />
+                            단순히 툴을 구독하는 것만으로는 문제를 해결할 수 없습니다.
+                        </span>
+                        <br className="hidden md:block" />
+                        <span className="text-white font-bold mt-4 block text-lg md:text-3xl">복잡한 기술 학습 비용과 시행착오,<br className="md:hidden" /> HumanLab AI가 0으로 만들어 드립니다.</span>
+                    </div>
                 </motion.div>
             </div>
 

@@ -6,7 +6,7 @@ import { Play } from "lucide-react";
 
 export function Section3Solution() {
     return (
-        <section className="h-screen relative flex items-center justify-center overflow-hidden bg-black">
+        <section className="min-h-screen relative flex items-center justify-center overflow-x-hidden bg-black py-20 md:py-0">
 
             {/* Background Image: Night Studio - Dark Premium */}
             <div className="absolute inset-0 z-0">
@@ -34,11 +34,11 @@ export function Section3Solution() {
                     transition={{ duration: 0.8 }}
                     className="max-w-5xl mx-auto text-center"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
+                    <h2 className="text-3xl md:text-6xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
                         기술은 우리가 다룹니다.<br /> 결과만 가져가십시오.
                     </h2>
 
-                    <p className="text-xl md:text-3xl text-white mb-12 leading-relaxed font-light">
+                    <p className="text-lg md:text-3xl text-white mb-12 leading-relaxed font-light">
                         HumanLab AI는 단순한 자동화 툴이 아닙니다.<br />
                         <strong className="text-blue-400">검증된 기획자</strong>와 <strong className="text-emerald-400">디자이너</strong>가 최신 AI 기술을 통제하여 최적의 결과물을 설계합니다.
                     </p>
@@ -119,7 +119,7 @@ export function Section3Solution() {
                     </div>
 
                     {/* Closing Statement */}
-                    <p className="text-xl md:text-2xl text-white font-medium">
+                    <p className="text-lg md:text-2xl text-white font-medium">
                         복잡한 계약 절차 없이, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 font-bold">구독 하나로 이 모든 팀을 소유하세요.</span>
                     </p>
                 </motion.div>

@@ -9,7 +9,7 @@ export function Section4Promise() {
         <section className="py-32 bg-black text-white flex flex-col items-center justify-center text-center px-4">
 
             <div className="space-y-12 max-w-4xl mx-auto">
-                <h2 className="text-3xl md:text-5xl font-bold text-gray-500 tracking-tight">
+                <h2 className="text-2xl md:text-5xl font-bold text-gray-500 tracking-tight">
                     We don't just make it.<br />
                     We keep it running.
                 </h2>
@@ -17,7 +17,7 @@ export function Section4Promise() {
                 <div className="h-px w-20 bg-white/20 mx-auto"></div>
 
                 {/* Huge Static Typography */}
-                <h1 className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter uppercase">
+                <h1 className="text-4xl md:text-8xl font-black text-white leading-none tracking-tighter uppercase">
                     The All-in-One<br />
                     Operation Partner
                 </h1>
